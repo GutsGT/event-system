@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ProductController;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [EventController::class, 'index']);
-Route::get('/events/create', [EventController::class, 'create']);
-
 // Route::get('/', function () {
 
 //     // Teste de envio de informações para a view
@@ -30,14 +29,14 @@ Route::get('/events/create', [EventController::class, 'create']);
 //     return view('welcome');
 // });
 
-Route::get('/contact', function () {
-    return view('contact');
-});
+// Route::get('/products', [ProductController::class, 'search']);
+// Route::get('/product/{id?}', [ProductController::class, 'view']);
 
-Route::get('/products', function (){
-    $busca = request('search');
-    return view('products', ['busca'=>$busca]);
-});
-Route::get('/product/{id?}', function ($id = null){
-    return view('product', ['id'=>$id]);
-});
+Route::get('/', [EventController::class, 'index']);
+
+Route::get('/events/list', [EventController::class, 'list']);
+Route::get('/events/create', [EventController::class, 'create']);
+Route::post('/events', [EventController::class, 'store']);
+
+Route::get('/contact', [ContactController::class, 'index']);
+
