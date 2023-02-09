@@ -32,6 +32,16 @@ header{
     border-color: #C28008;
 }
 
+.msg{
+    background-color: #D4EDDA;
+    color: #155724;
+    border: 1px solide #C3E6CB;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
+}
+
 /* navbar */
 #navbar{
     justify-content: space-between;
@@ -41,7 +51,8 @@ header{
 
 #navbar svg{
     width:50px;
-    margin-left:30px;
+    margin-left:15px;
+    margin-right:15px;
 }
 
 
@@ -95,11 +106,12 @@ header{
 }
 
 #events-container .card{
-    flex: 1 1 0;
+
+    flex: 1 1 24%;
     max-width: 25%;
     border-radius: 10px;
     padding: 0;
-    margin: 5px;
+    margin: .5%;
 }
 
 #events-container img{
