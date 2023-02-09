@@ -68,7 +68,7 @@ header{
 /* Search Container */
 
 #search-container{
-    background-image: url("../img/banner.jpg");
+    background-image: url("../img/tipos-de-evento-corporativos.jpg");
     background-size: cover;
     background-position: center;
     padding: 150px;
@@ -76,9 +76,10 @@ header{
 }
 
 #search-container h1{
-    color: #F2A340;
+    color: white;
     margin-bottom: 30px;
     font-weight: 900;
+    text-shadow: black .1em .1em .1em;
 }
 
 #search-container form{
@@ -184,7 +185,7 @@ header{
     font-weight: bold;
 }
 
-#info-container ion-icon{
+#info-container i{
     font-size: 20px;
     color: #F2A340;
     margin-right: 5px;
@@ -192,6 +193,15 @@ header{
 
 #info-container #event-submit{
     margin: 20px 0;
+}
+
+#items-list{
+    list-style: none;
+    padding-left: 0;
+}
+
+#items-lits li{
+    display: flex;
 }
 
 

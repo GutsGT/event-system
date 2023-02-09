@@ -10,6 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto" rel="stylesheet">
         <link href="/css/styles.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://kit.fontawesome.com/ec3b584267.css" crossorigin="anonymous">
 
         <!-- Styles -->
         <style>
@@ -35,7 +36,7 @@
                 color:inherit;text-decoration:inherit
             }
             svg,video{
-                display:block;vertical-align:middle
+                display:block;
             }
             video{
                 max-width:100%;height:auto
@@ -292,12 +293,27 @@
                         <li class="nav-item">
                             <a href="/events/create" class="nav-link">Criar Eventos</a>
                         </li>
+                        @auth
                         <li class="nav-item">
-                            <a href="/" class="nav-link">Entrar</a>
+                            <a href="/dashboard" class="nav-link">Meus Eventos</a>
+                        </li>    
+                        <li class="nav-item">
+                            <form action="/logout" method="post">
+                                @csrf
+                                <a href="/logout" class="nav-link" onclick="event.preventDefault(); this.closest('form').submit();">
+                                    Sair
+                                </a>
+                            </form>
+                        </li>    
+                        @endauth
+                        @guest
+                        <li class="nav-item">
+                            <a href="/login" class="nav-link">Entrar</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/" class="nav-link">Cadastrar</a>
+                            <a href="/register" class="nav-link">Cadastrar</a>
                         </li>
+                        @endguest
                     </ul>
                 </div>
             </nav>

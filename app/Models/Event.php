@@ -12,4 +12,10 @@ class Event extends Model
     protected $fillable = [
         'title', 'description', 'city', 'private'
     ];
+
+    protected $casts = [
+        'items'=>'array'
+    ];
+
+    protected $dates = ['date'];
 }
