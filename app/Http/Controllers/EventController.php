@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
-class EventController extends Controller
-{
+class EventController extends Controller{
+
+    public function create(){
+        return view('events.create');
+    }
     public function index(){
         return view('welcome');
     }
@@ -16,8 +19,14 @@ class EventController extends Controller
         return view('events.list', ['events'=>$events]);
     }
 
-    public function create(){
-        return view('events.create');
+    public function show(int $id){
+        $event = Event::findOrFail($id);
+
+        if(empty($event->image)){
+            $event->image = "../empty.png";
+        }
+
+        return view('events.show', ['event'=>$event]);
     }
 
     public function store(Request $request){
