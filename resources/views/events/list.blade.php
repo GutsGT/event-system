@@ -34,9 +34,10 @@
             @endforeach
             @if(count($events) == 0 && $search)
                 <p>Não foi possível encontrar eventos. <a style="text-decoration: underline; color: blue;" href="/events/list">Ver todos</a></p>
-            @elseif(count($events))
+            @elseif(count($events) == 0)
                 <p>Não há eventos disponíveis</p>
             @endif
+            
         </div>
     </div>
 @endsection

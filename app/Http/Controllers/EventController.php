@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EventController extends Controller{
@@ -32,11 +33,13 @@ class EventController extends Controller{
     public function show(int $id){
         $event = Event::findOrFail($id);
 
+        $eventOwner = User::where('id', $event->user_id)->first()->toArray();
+
         if(empty($event->image)){
             $event->image = "../empty.png";
         }
 
-        return view('events.show', ['event'=>$event]);
+        return view('events.show', ['event'=>$event, 'eventOwner'=>$eventOwner]);
     }
 
     public function store(Request $request){
@@ -57,6 +60,9 @@ class EventController extends Controller{
             $requestImage->move(public_path('img/events'), $imageName);
             $event->image = $imageName;
         }
+
+        $user = auth()->user();
+        $event->user_id = $user->id;
 
         $event->save();
 

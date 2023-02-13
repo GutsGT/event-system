@@ -14,7 +14,7 @@ class AddItemsToEventsTable extends Migration
     public function up()
     {
         Schema::table('events', function (Blueprint $table) {
-            $table->json('items')->after('city');
+            $table->json('items')->nullable()->after('city');
         });
     }
 
