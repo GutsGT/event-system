@@ -73,16 +73,28 @@ class EventController extends Controller{
         $user = auth()->user();
         $events = $user->events;
 
-        return view('events.dashboard', ['events'=>$events]);
+        $eventsAsParticipant = $user->eventsAsParticipant;
+
+        return view('events.dashboard', ['events'=>$events, 'eventsasparticipant'=>$eventsAsParticipant]);
     }
 
     public function destroy($id){
+
+        if(!$this->userIsEventOwner($id)){
+            return redirect('/dashboard')->with('msg', 'Não é possível excluir evento');
+        }
+
         Event::findOrFail($id)->delete();
 
         return redirect('/dashboard')->with('msg', 'Evento excluído com sucesso.');
     }
 
     public function edit($id){
+
+        if(!$this->userIsEventOwner($id)){
+            return redirect('/dashboard')->with('msg', 'Não é possível editar evento');
+        }
+
         $event = Event::findOrFail($id);
 
         return view('events.edit', ['event'=>$event]);
@@ -119,6 +131,13 @@ class EventController extends Controller{
 
         $event = Event::findOrFail($id);
 
-        return redirect('/dashboard')->with('msg', 'Sua presença foi confirmada no evento');
+        return redirect('/dashboard')->with('msg', 'Sua presença foi confirmada no evento '.$event->title);
     }
+
+    private function userIsEventOwner($id){
+        $user = auth()->user();
+        $event = Event::findOrFail($id);
+
+        return ($user->id == $event->user_id);
+    } 
 }
