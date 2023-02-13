@@ -69,4 +69,11 @@ class EventController extends Controller{
         return redirect('/events/list')->with("msg", "Evento criado com sucesso!");
     }
 
+    public function dashboard(){
+        $user = auth()->user();
+        $events = $user->events;
+
+        return view('events.dashboard', ['events'=>$events]);
+    }
+
 }
