@@ -30,8 +30,21 @@ class EventController extends Controller{
         return view('events.list', ['events'=>$events, 'search'=>$search]);
     }
 
-    public function show(int $id){
+    public function show($id){
         $event = Event::findOrFail($id);
+
+        $user = auth()->user();
+        $hasUserJoined = false;
+
+        if($user){
+            $userEvents = $user->eventsAsParticipant->toArray();
+            foreach($userEvents as $userEvent){
+                if($userEvent['id'] == $id){
+                    $hasUserJoined = true;
+                    break;
+                }
+            }
+        }
 
         $eventOwner = User::where('id', $event->user_id)->first()->toArray();
 
@@ -39,7 +52,7 @@ class EventController extends Controller{
             $event->image = "../empty.png";
         }
 
-        return view('events.show', ['event'=>$event, 'eventOwner'=>$eventOwner]);
+        return view('events.show', ['event'=>$event, 'eventOwner'=>$eventOwner, 'hasUserJoined'=>$hasUserJoined]);
     }
 
     public function store(Request $request){
@@ -140,4 +153,12 @@ class EventController extends Controller{
 
         return ($user->id == $event->user_id);
     } 
+
+    public function leaveEvent($id){
+        $user = auth()->user();
+        $user->eventsAsParticipant()->detach($id);
+
+        $event = Event::findOrFail($id);
+        return redirect('/dashboard')->with('msg', 'Você saiu com sucesso do evento '.$event->title);
+    }
 }
