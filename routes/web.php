@@ -38,6 +38,7 @@ Route::get('/events/create', [EventController::class, 'create'])->middleware('au
 Route::get('/events/list', [EventController::class, 'list']);
 Route::get('/events/{id}', [EventController::class, 'show']);
 Route::post('/events', [EventController::class, 'store'])->middleware('auth');
+Route::delete('/events/{id}', [EventController::class, 'destroy'])->middleware('auth');
 
 Route::get('/contact', [ContactController::class, 'index']);
 
