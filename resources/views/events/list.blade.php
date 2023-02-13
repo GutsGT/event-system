@@ -15,7 +15,6 @@
         @else
             <h2>Próximos eventos</h2>
         @endif
-        <p class="subtitle">Veja os eventos dos próximos dias</p>
         <div id="cards-container" class="row">
             @foreach($events as $event)
                 <div class="card col-md-3">
@@ -35,7 +34,7 @@
             @if(count($events) == 0 && $search)
                 <p>Não foi possível encontrar eventos. <a style="text-decoration: underline; color: blue;" href="/events/list">Ver todos</a></p>
             @elseif(count($events) == 0)
-                <p>Não há eventos disponíveis</p>
+                <p>Não há eventos disponíveis nos próximos dias</p>
             @endif
             
         </div>

@@ -24,7 +24,9 @@ class EventController extends Controller{
                 ['title', 'like', '%'.$search.'%']
             ])->get();
         }else{
-            $events = Event::all();
+            $events = Event::where([
+                ['date', '>=', date('Y-m-d')]
+            ])->get();
         }
 
         return view('events.list', ['events'=>$events, 'search'=>$search]);
