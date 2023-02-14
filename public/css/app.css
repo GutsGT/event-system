@@ -45,6 +45,8 @@ html {
 body {
   margin: 0; /* 1 */
   line-height: inherit; /* 2 */
+  background-color: black;
+  color: white;
 }
 
 /*
@@ -2247,3 +2249,27 @@ select {
   }
 }
 
+
+/* Configurações personalizadas */
+
+.login-container{
+  width: 350px;
+  margin: auto;
+  margin-top:130px;
+}
+
+.login-container .logo{
+  text-align: -webkit-center;
+  margin-bottom:40px;
+}
+
+.login-container .logo svg{
+  fill:white;
+}
+
+.login-container .form{
+  background-color: white;
+  padding: 40px 30px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
