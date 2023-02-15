@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
                 <label for="title">Data:</label>
-                <input type="date" class="form-control" id="date" name="date">
+                <input type="datetime-local" class="form-control" id="date" name="date">
             </div>
             <div class="form-group">
                 <label for="title">Cidade:</label>

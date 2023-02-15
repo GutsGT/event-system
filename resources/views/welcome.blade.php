@@ -12,20 +12,19 @@
             padding-top: 5%;
         }
 
-        /* .row h1{
-            font-family: 'Pacifico';
-            font-size: 80px;
-            color: transparent;
-            -webkit-text-stroke-width: 1px;
-            -webkit-text-stroke-color: white;
-            text-shadow: white 2px 2px 2px;
-        } */
-
         .row h1{
             font-family: 'Pacifico';
             font-size: 80px;
             color: white;
             animation: neon 4s infinite;
+        }
+
+        .nav-item{
+            height:min-content;
+        }
+
+        form{
+            margin: 0;
         }
 
         @keyframes neon{

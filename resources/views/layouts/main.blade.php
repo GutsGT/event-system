@@ -291,14 +291,16 @@
                     </a>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a href="/events/list" class="nav-link">Eventos</a>
+                            <a href="/events/list" class="{{Request::is('events/list')? 'nav-link selected' : 'nav-link'}}">
+                                Eventos
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/events/create" class="nav-link">Criar Eventos</a>
+                            <a href="/events/create" class="{{Request::is('events/create')? 'nav-link selected' : 'nav-link'}}">Criar Evento</a>
                         </li>
                         @auth
                         <li class="nav-item">
-                            <a href="/dashboard" class="nav-link">Meus Eventos</a>
+                            <a href="/dashboard" class="{{Request::is('dashboard')? 'nav-link selected' : 'nav-link'}}">Meus Eventos</a>
                         </li>    
                         <li class="nav-item">
                             <form action="/logout" method="post">
@@ -311,10 +313,10 @@
                         @endauth
                         @guest
                         <li class="nav-item">
-                            <a href="/login" class="nav-link">Entrar</a>
+                            <a href="/login" class="{{Request::is('login')? 'nav-link selected' : 'nav-link'}}">Entrar</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/register" class="nav-link">Cadastrar</a>
+                            <a href="/register" class="{{Request::is('register')? 'nav-link selected' : 'nav-link'}}">Cadastrar</a>
                         </li>
                         @endguest
                     </ul>
@@ -332,7 +334,7 @@
             </div>
         </main>
         <footer>
-            <p>HDC Events &copy; 2020</p>
+            <p>Laravel Project 2023</p>
         </footer>
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

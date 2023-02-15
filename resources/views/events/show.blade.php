@@ -15,6 +15,10 @@
                     <ion-icon name="location-outline"></ion-icon>
                     {{$event->city}}
                 </p>
+                <p class="event-date">
+                    <ion-icon name="time-outline"></ion-icon>
+                    {{date_format($event->date, 'd/m/Y H:i')}}
+                </p>
                 <p class="events-participants">
                     <ion-icon name="people-outline"></ion-icon>
                     {{count($event->users)}} participantes    
@@ -23,6 +27,13 @@
                     <ion-icon name="star-outline"></ion-icon>
                     {{$eventOwner['name']}}
                 </p>
+                <ul id="items-list">
+                    @if($event->items)
+                        @foreach($event->items as $item)
+                            <li><ion-icon name="play-outline"></ion-icon><span>{{$item}}</span></li>
+                        @endforeach
+                    @endif
+                </ul>
                 @if(!$hasUserJoined)
                     <form action="/events/join/{{$event->id}}" method="POST">
                         @csrf
@@ -35,16 +46,8 @@
                         </a>
                     </form>
                 @else
-                    <p class="already-joined-msg">Você já está participando deste evento!</p>
+                    <p class="already-joined-msg">Presença confirmada.</p>
                 @endif
-                <h3>O evento conta com:</h3>
-                <ul id="items-list">
-                    @if($event->items)
-                        @foreach($event->items as $item)
-                            <li><ion-icon name="play-outline"></ion-icon><span>{{$item}}</span></li>
-                        @endforeach
-                    @endif
-                </ul>
             </div>
             <div class="col-md-12" id="description-container">
                 <h1>Sobre o evento:</h1>

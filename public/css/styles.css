@@ -46,9 +46,10 @@ header{
 
 #info-container .already-joined-msg{
     margin: 15px 0;
-    color: #004085;
-    background-color: #CCE5FF;
-    border: 1px soklid #B8DAFF;
+    color: white;
+    background-color: #2a59ff;
+    border: 1px solid white;
+    border-radius: 10px;
     padding: 10px;
     width: 275px;
 }
@@ -58,6 +59,10 @@ header{
     justify-content: space-between;
     color: white;
     padding:5px 0;
+}
+
+.navbar-nav{
+    margin-right:20px;
 }
 
 #navbar svg{
@@ -73,9 +78,14 @@ header{
 #navbar a{
     font-weight: bold;
     color: white;
+    letter-spacing: 1px;
 }
 #navbar a:hover{
     color: #55f;
+}
+
+#navbar .nav-item .selected{
+    color:#55f;
 }
 
 /* Search Container */
@@ -120,13 +130,13 @@ header{
 }
 
 #events-container .card{
-
     flex: 1 1 24%;
-    max-width: 25%;
+    max-width: 24%;
+    border: 1px solid #444;
     border-radius: 10px;
     padding: 0;
     margin: .5%;
-    background-color: black;
+    background-color: #111;
 }
 
 .card .card-image{
@@ -137,9 +147,11 @@ header{
 }
 
 .card .card-image img{
-    height:inherit;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    height:auto;
+    width:auto;
+    max-height:100%;
+    max-width:100%;
+    border-radius: 10px;
 }
 
 .card .card-date{
@@ -154,7 +166,6 @@ header{
 }
 
 .card .card-body{
-    border: 1px solid #444;
     border-radius: 0 0 10px 10px;
 }
 
