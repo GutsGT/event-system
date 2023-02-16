@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('title', 'Criar evento')
+@section('style', 'event_create.css')
 
 @section('content')
     <div id="event-create-container" class="col-md-6 offset-md-3">

@@ -1,5 +1,15 @@
+html{
+    line-height:1.15;-webkit-text-size-adjust:100%
+}
+html{
+    font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5
+}
+
 *{
     font-family: 'Roboto';
+}
+*,:after,:before{
+    box-sizing:border-box;border:0 solid #e2e8f0
 }
 
 body{
@@ -9,6 +19,8 @@ body{
     background-color: black;
     color: white;
     min-width:370px;
+    margin:0;
+    font-family: 'Nunito', sans-serif;
 }
 
 header{
@@ -61,11 +73,7 @@ header{
     width: 180px;
 }
 
-/* navbar */
-.container {
-    margin: 0 auto;
-    padding: 15px;
-}
+/* Navbar */
 .navbar {
     align-items: center;
     display: flex;
@@ -73,13 +81,12 @@ header{
     justify-content: space-between;
     padding: 15px 30px;
 }
+
 .navbar a {
     color: #fff;
     letter-spacing: 1px;
 }
-.navbar a:hover{
-    color: #55f;
-}
+.navbar a:hover{color: #55f;}
 
 .navbar .logo svg{
     width:50px;
@@ -87,12 +94,14 @@ header{
 .navbar .logo svg:hover{
     fill: #55f;
 }
+
 .list {
     list-style: none;
     display: flex;
     gap: 15px;
     margin-top: revert;
 }
+
 #toggler, .navbar label {
     display: none;
 }
@@ -121,275 +130,6 @@ header{
         max-height: 100%;
     }
 }
-
-/* Search Container */
-
-#search-container{
-    background-image: url("../img/background_events_list.jpg");
-    background-size: cover;
-    background-position: center;
-    padding: 150px 0 150px 0;
-    text-align: center;
-}
-
-#search-container h1{
-    width: fit-content;
-    color: white;
-    margin: 0px auto 30px auto;
-    font-weight: 900;
-    text-shadow: black .1em .1em .1em;
-}
-
-#search-container form{
-    width: 300px;
-    margin: 0 auto;
-}
-
-.events-title{
-    padding: 30px 0px 0px 50px;
-}
-
-
-/* Events list */
-#events-container{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
-    gap: 10px;
-    padding: 50px;
-}
-
-#events-container h2{
-    margin-bottom: 10px;    
-}
-
-#events-container .subtitle{   
-    margin-bottom: 30px;
-}
-
-#events-container .card{
-    border: 1px solid #444;
-    border-radius: 10px;
-    background-color: #111;
-}
-
-#events-container .card{
-    flex: 1 1 24%;
-    border: 1px solid #444;
-    border-radius: 10px;
-    padding: 0;
-    margin: .5%;
-    background-color: #111;
-}
-
-.card .card-image{
-    background-size: cover;
-    background-repeat: no-repeat;
-    height:150px;
-    text-align: center;
-    background-color: #111;
-    border-radius: 10px 10px 0 0;
-}
-
-.card .card-date{
-    font-size: 12px;
-    color: #CCC;
-}
-
-.card .card-title{
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 30px;
-}
-
-.card .card-body{
-    border-radius: 0 0 10px 10px;
-}
-
-.card .card-participants{
-    font-size: 14px;
-    color: #757575;
-}
-
-.pagination{
-    place-content: center;
-}
-
-.pagination a {
-    color: white;
-    float: left;
-    padding: 5px 15px;
-    font-size: 20px;
-    text-decoration: none;
-    transition: background-color .3s;
-    margin: 0 4px;
-}
-
-.pagination a:first-child {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-  
-.pagination a:last-child {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-  
-.pagination a.active {
-    background-color: #222;
-}
-  
-.pagination a:hover:not(.active) {
-    background-color: #222;
-}
-
-/* Event create page */
-#event-create-container{
-    padding: 30px;
-}
-
-#event-create-container label{
-    font-weight: bold;
-}
-
-#event-create-container input,
-#event-create-container select,
-#event-create-container textarea{
-    font-size: 12px;
-}
-
-#event-create-container .form-group{
-    padding-top: 15px;
-}
-
-/* Event show page */
-
-#image-container{
-    text-align: center;
-}
-
-#image-container,
-#info-container{
-    margin-top: 30px;
-}
-
-#image-container img{
-    border-radius: 10px;
-}
-
-#image-container h1{
-    font-size: 36px;
-    font-weight: 900;
-}
-
-#image-container p{
-    margin: 0;
-    font-size: 14px;
-    display: flex;
-}
-
-#info-container h3,
-#description-container h3{
-    font-size: 20px;
-    font-weight: bold;
-}
-
-#info-container i{
-    font-size: 20px;
-    color: #55f;
-    margin-right: 5px;
-}
-
-#info-container #event-submit{
-    margin: 20px 0;
-}
-
-#items-list{
-    list-style: none;
-    padding-left: 0;
-}
-
-#items-lits li{
-    display: flex;
-}
-
-#description-container{
-    margin-top: 30px;
-}
-
-/* Dashboard */
-.dashboard-title-container{
-    margin-bottom: 30px;
-    margin-top: 30px;
-}
-
-.dashboard-events-container form{
-    display: inline-block;
-}
-
-.table{
-    background-color: #111;
-    border-radius:10px;
-    color: white;
-}
-
-
-.table .name{
-    width:55%;
-}
-
-.table .participants{
-    width:20%;
-}
-
-.table .actions{
-    width:20%;
-}
-
-.table thead tr th, .table tbody tr td{
-    text-align:center;
-}
-
-.table tbody tr:last-child td{
-    border:none;
-}
-
-.edit-btn{
-    background-color: #030;
-    color:white;
-    border: none;
-    transition:revert;
-    transition-duration:.3s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.edit-btn:hover{
-    background-color: #050;
-}
-
-.delete-btn{
-    background-color: #300;
-    color: white;
-    border: none;
-    transition:revert;
-    transition-duration:.3s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.delete-btn:hover{
-    background-color: #500;
-}
-
-.table-name:hover{
-    color: #fff;
-    text-shadow:#aaa 2px 2px 5px;
-}
-
-/* Edit page */
-.img-preview{
-    width: 100px;
-    margin-top: 20px;
-}
-
 
 /* footer */
 footer{
@@ -423,28 +163,27 @@ footer p{
 
 
 
-html{
-    line-height:1.15;-webkit-text-size-adjust:100%
-}
-body{
-    margin:0;
-    font-family: 'Nunito', sans-serif;
-    overflow-x: hidden;
-}
+
+
+
+
+
+
+
+
+
+
+
+
 a{
     background-color:transparent
 }[hidden]{
     display:none
 }
-html{
-    font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5
-}
-*,:after,:before{
-    box-sizing:border-box;border:0 solid #e2e8f0
-}
 a{
     color:inherit;text-decoration:inherit
 }
+
 svg,video{
     display:block;
 }

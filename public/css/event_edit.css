@@ -1,0 +1,22 @@
+#event-create-container{
+    padding: 30px;
+}
+
+#event-create-container label{
+    font-weight: bold;
+}
+
+#event-create-container input,
+#event-create-container select,
+#event-create-container textarea{
+    font-size: 12px;
+}
+
+#event-create-container .form-group{
+    padding-top: 15px;
+}
+
+.img-preview{
+    width: 280px;
+    margin-top: 20px;
+}

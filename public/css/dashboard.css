@@ -1,0 +1,65 @@
+.dashboard-title-container{
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+.dashboard-events-container form{
+    display: inline-block;
+}
+
+.table{
+    background-color: #111;
+    border-radius:10px;
+    color: white;
+}
+
+.table .name{
+    width:55%;
+}
+
+.table .participants{
+    width:20%;
+}
+
+.table .actions{
+    width:20%;
+}
+
+.table thead tr th, .table tbody tr td{
+    text-align:center;
+}
+
+.table tbody tr:last-child td{
+    border:none;
+}
+
+.edit-btn{
+    background-color: #030;
+    color:white;
+    border: none;
+    transition:revert;
+    transition-duration:.3s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.edit-btn:hover{
+    background-color: #050;
+}
+
+.delete-btn{
+    background-color: #300;
+    color: white;
+    border: none;
+    transition:revert;
+    transition-duration:.3s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.delete-btn:hover{
+    background-color: #500;
+}
+
+.table-name:hover{
+    color: #fff;
+    text-shadow:#aaa 2px 2px 5px;
+}

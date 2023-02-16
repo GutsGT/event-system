@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
-@section('title', 'Editando'. $event->title)
+@section('title', 'Editando '. $event->title)
+@section('style', 'event_edit.css')
 
 @section('content')
     <div id="event-create-container" class="col-md-6 offset-md-3">

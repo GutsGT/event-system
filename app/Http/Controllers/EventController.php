@@ -23,11 +23,14 @@ class EventController extends Controller{
             ($search? ['title', 'like', '%'.$search.'%']: ['date', '>=', date('Y-m-d')])
         ])->orderBy('date')->paginate(12);
 
+        $returnArray = ['events'=>$events, 'search'=>$search];
 
+        if(auth()->user()){
+            $user = auth()->user();
+            $returnArray[] = $user->eventsAsParticipant->toArray();
+        }
 
-        // dd($events->total());
-
-        return view('events.list', ['events'=>$events, 'search'=>$search]);
+        return view('events.list', $returnArray);
     }
 
     public function show($id){

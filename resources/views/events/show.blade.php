@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('title', $event->title)
+@section('style', 'event_show.css')
 
 @section('content')
 
