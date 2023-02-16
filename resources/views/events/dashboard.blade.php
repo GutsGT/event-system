@@ -12,10 +12,10 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Participantes</th>
-                        <th scope="col">Ações</th>
+                        <th scope="col" class="id">#</th>
+                        <th scope="col" class="name">Nome</th>
+                        <th scope="col" class="participants">Participantes</th>
+                        <th scope="col" class="actions">Ações</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -3,7 +3,7 @@
 
 @extends('layouts.main')
 
-@section('title', 'HDC Events')
+@section('title', 'Laravel Project')
 
 @section('content')
     <style>

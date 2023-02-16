@@ -8,6 +8,7 @@ body{
     position: relative;
     background-color: black;
     color: white;
+    min-width:370px;
 }
 
 header{
@@ -27,65 +28,98 @@ header{
     background-color: #55f;
     border: 2px solid #33f;
     margin-top:10px;
+    transition:revert;
+    transition-duration:.3s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary:hover{
     background-color: #33f;
     border-color: #33f;
+    box-shadow: white 2px 2px 1px;
 }
 
-.msg{
-    background-color: #D4EDDA;
-    color: #155724;
-    border: 1px solide #C3E6CB;
-    width: 100%;
-    margin-bottom: 0;
+.msg {
+    text-shadow: 2px 2px 6px #3f3;
+    border: 1px solid;
+    border-color: black black #028c22 black;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    width: 50%;
+    margin: 0 25%;
     text-align: center;
     padding: 10px;
 }
 
 #info-container .already-joined-msg{
+    text-shadow: 2px 2px 6px #3f3;
     margin: 15px 0;
     color: white;
-    background-color: #2a59ff;
     border: 1px solid white;
     border-radius: 10px;
     padding: 10px;
-    width: 275px;
+    width: 180px;
 }
 
 /* navbar */
-#navbar{
+.container {
+    margin: 0 auto;
+    padding: 15px;
+}
+.navbar {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
-    color: white;
-    padding:5px 0;
+    padding: 15px 30px;
 }
-
-.navbar-nav{
-    margin-right:20px;
-}
-
-#navbar svg{
-    width:50px;
-    margin-left:15px;
-    margin-right:15px;
-}
-#navbar svg:hover{
-    fill: #55f;
-}
-
-
-#navbar a{
-    font-weight: bold;
-    color: white;
+.navbar a {
+    color: #fff;
     letter-spacing: 1px;
 }
-#navbar a:hover{
+.navbar a:hover{
     color: #55f;
 }
 
-#navbar .nav-item .selected{
+.navbar .logo svg{
+    width:50px;
+}
+.navbar .logo svg:hover{
+    fill: #55f;
+}
+.list {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin-top: revert;
+}
+#toggler, .navbar label {
+    display: none;
+}
+
+.navbar .nav-item .selected{
     color:#55f;
+}
+
+@media screen and (max-width: 600px) {
+    .menu {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+    }
+    .list {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    .navbar label {
+        display: inline-flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    #toggler:checked ~ .menu {
+        max-height: 100%;
+    }
 }
 
 /* Search Container */
@@ -94,44 +128,52 @@ header{
     background-image: url("../img/tipos-de-evento-corporativos.jpg");
     background-size: cover;
     background-position: center;
-    padding: 150px;
+    padding: 150px 0 150px 0;
     text-align: center;
 }
 
 #search-container h1{
+    width: fit-content;
     color: white;
-    margin-bottom: 30px;
+    margin: 0px auto 30px auto;
     font-weight: 900;
     text-shadow: black .1em .1em .1em;
 }
 
 #search-container form{
-    width: 50%;
+    width: 300px;
     margin: 0 auto;
+}
+
+.events-title{
+    padding: 30px 0px 0px 50px;
 }
 
 
 /* Events list */
 #events-container{
-    padding:50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+    gap: 10px;
+    padding: 50px;
 }
 
 #events-container h2{
     margin-bottom: 10px;    
 }
 
-#events-container .subtitle{
-    
+#events-container .subtitle{   
     margin-bottom: 30px;
 }
 
-#cards-container{
-    display: flex;
+#events-container .card{
+    border: 1px solid #444;
+    border-radius: 10px;
+    background-color: #111;
 }
 
 #events-container .card{
     flex: 1 1 24%;
-    max-width: 24%;
     border: 1px solid #444;
     border-radius: 10px;
     padding: 0;
@@ -140,18 +182,12 @@ header{
 }
 
 .card .card-image{
+    background-size: cover;
+    background-repeat: no-repeat;
     height:150px;
     text-align: center;
     background-color: #111;
     border-radius: 10px 10px 0 0;
-}
-
-.card .card-image img{
-    height:auto;
-    width:auto;
-    max-height:100%;
-    max-width:100%;
-    border-radius: 10px;
 }
 
 .card .card-date{
@@ -174,6 +210,38 @@ header{
     color: #757575;
 }
 
+.pagination{
+    place-content: center;
+}
+
+.pagination a {
+    color: white;
+    float: left;
+    padding: 5px 15px;
+    font-size: 20px;
+    text-decoration: none;
+    transition: background-color .3s;
+    margin: 0 4px;
+}
+
+.pagination a:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+  
+.pagination a:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+  
+.pagination a.active {
+    background-color: #222;
+}
+  
+.pagination a:hover:not(.active) {
+    background-color: #222;
+}
+
 /* Event create page */
 #event-create-container{
     padding: 30px;
@@ -189,7 +257,11 @@ header{
     font-size: 12px;
 }
 
-/* Event page */
+#event-create-container .form-group{
+    padding-top: 15px;
+}
+
+/* Event show page */
 
 #image-container{
     text-align: center;
@@ -250,12 +322,33 @@ header{
     margin-top: 30px;
 }
 
-.dashboard-events-container th{
-    width:25%;
-}
-
 .dashboard-events-container form{
     display: inline-block;
+}
+
+.table{
+    background-color: #111;
+    color: white;
+}
+
+.table .id{
+    width:10%;
+}
+
+.table .name{
+    width:55%;
+}
+
+.table .participants{
+    width:10%;
+}
+
+.table .actions{
+    width:20%;
+}
+
+.table thead tr th, .table tbody tr td{
+    text-align:center;
 }
 
 /* Edit page */
@@ -269,11 +362,14 @@ header{
 footer{
     text-align: center;
     background-color: black;
-    color: #FFF; 
+    color: #FFF;
     padding: 30px;
     position: absolute;
     bottom: 0;
-    width: 100%;
+    left: 2.5%;
+    right: 2.5%;
+    width: 95%;
+    border-top:1px solid #222;
 }
 
 footer p{

@@ -19,15 +19,13 @@ class EventController extends Controller{
 
         $search = request('search');
 
-        if($search){
-            $events = Event::where([
-                ['title', 'like', '%'.$search.'%']
-            ])->get();
-        }else{
-            $events = Event::where([
-                ['date', '>=', date('Y-m-d')]
-            ])->get();
-        }
+        $events = Event::where([
+            ($search? ['title', 'like', '%'.$search.'%']: ['date', '>=', date('Y-m-d')])
+        ])->paginate(12);
+
+
+
+        // dd($events->total());
 
         return view('events.list', ['events'=>$events, 'search'=>$search]);
     }
@@ -49,10 +47,6 @@ class EventController extends Controller{
         }
 
         $eventOwner = User::where('id', $event->user_id)->first()->toArray();
-
-        if(empty($event->image)){
-            $event->image = "../empty.png";
-        }
 
         return view('events.show', ['event'=>$event, 'eventOwner'=>$eventOwner, 'hasUserJoined'=>$hasUserJoined]);
     }
@@ -146,7 +140,7 @@ class EventController extends Controller{
 
         $event = Event::findOrFail($id);
 
-        return redirect('/dashboard')->with('msg', 'Sua presença foi confirmada no evento '.$event->title);
+        return redirect("/events/$id")->with('msg', 'Presença confirmada');
     }
 
     private function userIsEventOwner($id){
@@ -161,6 +155,6 @@ class EventController extends Controller{
         $user->eventsAsParticipant()->detach($id);
 
         $event = Event::findOrFail($id);
-        return redirect('/dashboard')->with('msg', 'Você saiu com sucesso do evento '.$event->title);
+        return redirect('/dashboard')->with('msg', 'Presença removida');
     }
 }

@@ -2260,7 +2260,7 @@ select {
 
 .login-container .logo{
   text-align: -webkit-center;
-  margin-bottom:40px;
+  margin: 0px 40% 40px 40%;
 }
 
 .login-container .logo svg{
@@ -2295,7 +2295,7 @@ select {
   font-size:12px;
   text-transform:uppercase;
   transition-duration:.3s;
-  trasition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-auth:hover{
