@@ -21,7 +21,7 @@ class EventController extends Controller{
 
         $events = Event::where([
             ($search? ['title', 'like', '%'.$search.'%']: ['date', '>=', date('Y-m-d')])
-        ])->paginate(12);
+        ])->orderBy('date')->paginate(12);
 
 
 
@@ -82,7 +82,27 @@ class EventController extends Controller{
         $user = auth()->user();
         $events = $user->events;
 
+        for($f = 0; $f < count($events); $f++){
+            for($f2 = $f; $f2 < count($events); $f2++){
+                if($events[$f2]->title < $events[$f]->title){
+                    $aux = $events[$f2];
+                    $events[$f2] = $events[$f];
+                    $events[$f] = $aux;
+                }
+            }
+        }
+
         $eventsAsParticipant = $user->eventsAsParticipant;
+
+        for($f = 0; $f < count($eventsAsParticipant); $f++){
+            for($f2 = $f; $f2 < count($eventsAsParticipant); $f2++){
+                if($eventsAsParticipant[$f2]->title < $eventsAsParticipant[$f]->title){
+                    $aux = $eventsAsParticipant[$f2];
+                    $eventsAsParticipant[$f2] = $eventsAsParticipant[$f];
+                    $eventsAsParticipant[$f] = $aux;
+                }
+            }
+        }
 
         return view('events.dashboard', ['events'=>$events, 'eventsasparticipant'=>$eventsAsParticipant]);
     }

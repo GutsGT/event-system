@@ -12,7 +12,6 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col" class="id">#</th>
                         <th scope="col" class="name">Nome</th>
                         <th scope="col" class="participants">Participantes</th>
                         <th scope="col" class="actions">Ações</th>
@@ -21,15 +20,14 @@
                 <tbody>
                     @foreach($events as $event)
                         <tr>
-                            <td scope="row">{{$loop->index + 1}}</td>
-                            <td><a href="/events/{{$event->id}}">{{$event->title}}</a></td>
+                            <td><a href="/events/{{$event->id}}" class="table-name">{{$event->title}}</a></td>
                             <td>{{count($event->users)}}</td>
                             <td>
-                                <a href="/events/edit/{{$event->id}}" class="btn btn-info edit-btn"><ion-icon name="create-outline"></ion-icon> Editar</a>
+                                <a href="/events/edit/{{$event->id}}" class="btn edit-btn"><ion-icon name="create-outline"></ion-icon> Editar</a>
                                 <form action="/events/{{$event->id}}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger delete-btn"><ion-icon name="trash-outline"></ion-icon>Deletar</button>
+                                    <button type="submit" class="btn delete-btn"><ion-icon name="trash-outline"></ion-icon> Deletar</button>
                                 </form>
                             </td>
                         </tr>
@@ -48,24 +46,22 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Participantes</th>
-                        <th scope="col">Ações</th>
+                        <th scope="col" class="name">Nome</th>
+                        <th scope="col" class="participants">Participantes</th>
+                        <th scope="col" class="actions">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($eventsasparticipant as $event)
                         <tr>
-                            <td scope="row">{{$loop->index + 1}}</td>
-                            <td><a href="/events/{{$event->id}}">{{$event->title}}</a></td>
+                            <td><a href="/events/{{$event->id}}" class="table-name">{{$event->title}}</a></td>
                             <td>{{count($event->users)}}</td>
                             <td>
                                 <form action="/events/leave/{{$event->id}}" method="POST">
                                     @csrf
                                     @method("DELETE")
                                     <button type="submit" class="btn btn-danger delete-btn">
-                                        <ion-icon name="trash-outline"></ion-icon>Sair do evento
+                                        <ion-icon name="trash-outline"></ion-icon> Sair do evento
                                     </button>
                                 </form>
                             </td>

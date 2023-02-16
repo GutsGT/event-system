@@ -125,7 +125,7 @@ header{
 /* Search Container */
 
 #search-container{
-    background-image: url("../img/tipos-de-evento-corporativos.jpg");
+    background-image: url("../img/background_events_list.jpg");
     background-size: cover;
     background-position: center;
     padding: 150px 0 150px 0;
@@ -328,19 +328,17 @@ header{
 
 .table{
     background-color: #111;
+    border-radius:10px;
     color: white;
 }
 
-.table .id{
-    width:10%;
-}
 
 .table .name{
     width:55%;
 }
 
 .table .participants{
-    width:10%;
+    width:20%;
 }
 
 .table .actions{
@@ -349,6 +347,41 @@ header{
 
 .table thead tr th, .table tbody tr td{
     text-align:center;
+}
+
+.table tbody tr:last-child td{
+    border:none;
+}
+
+.edit-btn{
+    background-color: #030;
+    color:white;
+    border: none;
+    transition:revert;
+    transition-duration:.3s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.edit-btn:hover{
+    background-color: #050;
+}
+
+.delete-btn{
+    background-color: #300;
+    color: white;
+    border: none;
+    transition:revert;
+    transition-duration:.3s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.delete-btn:hover{
+    background-color: #500;
+}
+
+.table-name:hover{
+    color: #fff;
+    text-shadow:#aaa 2px 2px 5px;
 }
 
 /* Edit page */
