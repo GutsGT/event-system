@@ -1,22 +1,22 @@
-#event-create-container{
+#event-manage-container{
     padding: 30px;
 }
 
-#event-create-container label{
+#event-manage-container label{
     font-weight: bold;
 }
 
-#event-create-container input,
-#event-create-container select,
-#event-create-container textarea{
+#event-manage-container input,
+#event-manage-container select,
+#event-manage-container textarea{
     font-size: 12px;
 }
 
-#event-create-container .form-group{
+#event-manage-container .form-group{
     padding-top: 15px;
 }
 
-#event-create-container .image-group{
+#event-manage-container .image-group{
     padding-top: 15px;
     display: flex;
 }

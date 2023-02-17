@@ -24,7 +24,7 @@
                             <td><a href="/events/{{$event->id}}" class="table-name">{{$event->title}}</a></td>
                             <td>{{count($event->users)}}</td>
                             <td>
-                                <a href="/events/edit/{{$event->id}}" class="btn edit-btn"><ion-icon name="create-outline"></ion-icon> Editar</a>
+                                <a href="/events/manage?id={{$event->id}}" class="btn edit-btn"><ion-icon name="create-outline"></ion-icon> Editar</a>
                                 <form action="/events/{{$event->id}}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -36,7 +36,7 @@
                 </tbody>
             </table>
         @else
-            <p>Você ainda não tem eventos, <a href="/events/create">Criar evento</a></p>
+            <p>Você ainda não tem eventos, <a href="/events/manage">Criar evento</a></p>
         @endif
     </div>
     <div class="col-md-10 offset-md-1 dashboard-title-container">

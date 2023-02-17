@@ -38,7 +38,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/events/create" class="{{Request::is('events/create')? 'nav-link selected' : 'nav-link'}}">Criar Evento</a>
+                            <a href="/events/manage" class="{{Request::is('events/manage') && !request('id')? 'nav-link selected' : 'nav-link'}}">Criar Evento</a>
                         </li>
                         @auth
                             <li class="nav-item">

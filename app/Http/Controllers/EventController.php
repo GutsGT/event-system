@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller{
 
-    public function create(){
-        return view('events.create');
-    }
     public function index(){
         return view('welcome');
     }
@@ -82,6 +79,7 @@ class EventController extends Controller{
     }
 
     public function dashboard(){
+
         $user = auth()->user();
         $events = $user->events;
 
@@ -121,15 +119,19 @@ class EventController extends Controller{
         return redirect('/dashboard')->with('msg', 'Evento excluído com sucesso.');
     }
 
-    public function edit($id){
+    public function manage(){
 
-        if(!$this->userIsEventOwner($id)){
-            return redirect('/dashboard')->with('msg', 'Não é possível editar evento');
+        $returnArray = [];
+        if(request('id')){
+            $id = request('id');
+            if(!$this->userIsEventOwner($id)){
+                return redirect('/dashboard')->with('msg', 'Não é possível editar evento');
+            }
+    
+            $returnArray['event'] = Event::findOrFail($id);
         }
 
-        $event = Event::findOrFail($id);
-
-        return view('events.edit', ['event'=>$event]);
+        return view('events.manage', $returnArray);
     }
 
     public function update(Request $request){

@@ -1,20 +1,42 @@
 @extends('layouts.main')
 
-@section('title', 'Editando '. $event->title)
-@section('style', 'event_edit.css')
+@if(isset($event))
+    @section('title', 'Editando '. $event->title)
+@else
+    @section('title', 'Criando evento')
+@endif
+
+
+@section('style', 'event_manage.css')
 
 @section('content')
-    <div id="event-create-container" class="col-md-6 offset-md-3">
-        <h1>Editando evento</h1>
-        <form action="/events/update/{{$event->id}}" method="POST" enctype="multipart/form-data">
+    <div id="event-manage-container" class="col-md-6 offset-md-3">
+        @if(isset($event))
+            <h1>Editando evento</h1>
+        @else
+            <h1>Criando evento</h1>
+        @endif
+        <form action="@if(isset($event)) /events/update/{{$event->id}} @else /events @endif" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
+
+            @if(isset($event))
+                @method('PUT')
+            @else
+                <?php
+                    $event = new App\Models\Event();
+                    $event->image = $event->title = $event->date = $event->city = $event->description = "";
+                    
+                ?>
+            @endif
+
             <div class="image-group">
                 <label for="image" class="image-label">
                     <input type="file" class="form-control-file" id="image" name="image">
                     <span class="preview">
-                        @if($event->image)
+                        @if(isset($event->image) && !empty($event->image))
                             <img src="/img/events/{{$event->image}}" alt="{{$event->title}}" class="img-preview"/>
+                        @else
+                            Escolher imagem
                         @endif
                     </span>
                 </label>
@@ -66,4 +88,4 @@
     </div>
 @endsection
 
-@section('js', 'edit.js')
+@section('js', 'manage.js')

@@ -21,6 +21,6 @@ inputFile.addEventListener('change', function(e){
         });
         reader.readAsDataURL(file);
     }else{
-        pictureImage.innerHTML = 'Escolha uma imagem';
+        pictureImage.innerHTML = 'Escolher imagem';
     }
 });
