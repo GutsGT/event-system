@@ -8,7 +8,21 @@
     <div class="col-md-10 offset-md-1">
         <div class="row">
             <div id="image-container" class="col-md-6">
-                <img src="/img/events/{{$event->image}}" class="img-fluid"  alt="">
+                @if($event->image)
+                    <img src="/img/events/{{$event->image}}" class="img-fluid"  alt="">
+                @else
+                    <div class="no-image"></div>
+                @endif
+                @if($isOwner)
+                    <div class="btn-container">
+                        <a href="/events/manage?id={{$event->id}}" class="btn edit-btn"><ion-icon name="create-outline" role="img" class="md hydrated" aria-label="create outline"></ion-icon> Editar</a>
+                        <form action="/events/{{$event->id}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn delete-btn"><ion-icon name="trash-outline" role="img" class="md hydrated" aria-label="trash outline"></ion-icon> Deletar</button>
+                        </form>
+                    </div>
+                @endif
             </div>
             <div id="info-container" class="col-md-6">
                 <h1>{{$event->title}}</h1>
@@ -35,7 +49,7 @@
                         @endforeach
                     @endif
                 </ul>
-                @if(!$hasUserJoined)
+                @if(!$joined)
                     <form action="/events/join/{{$event->id}}" method="POST">
                         @csrf
                         <a href="/events/join/{{$event->id}}" 

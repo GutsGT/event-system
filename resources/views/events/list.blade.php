@@ -21,7 +21,7 @@
     <div id="events-container">
         @foreach($events as $event)
             <div class="card">
-                <a href="/events/{{$event->id}}">
+                <a href="/events/{{$event->id}}" class="card-link">
                     <div class="card-image" style="@if($event->image)background-image: url(/img/events/{{$event->image}}) @endif"></div>
                 </a>
                 <div class="card-body">

@@ -31,24 +31,30 @@ class EventController extends Controller{
     }
 
     public function show($id){
+
         $event = Event::findOrFail($id);
+        $eventOwner = User::where('id', '=', $event->user_id)->first();
 
         $user = auth()->user();
-        $hasUserJoined = false;
+        $joined = false;
+        $isOwner = false;
+
 
         if($user){
-            $userEvents = $user->eventsAsParticipant->toArray();
-            foreach($userEvents as $userEvent){
-                if($userEvent['id'] == $id){
-                    $hasUserJoined = true;
-                    break;
-                }
+            $eventJoined = Event::where('events.id', '=', $id)
+                ->where('event_user.user_id', '=', $user->id)
+                ->join('event_user', 'event_id', '=', 'id')->first();
+
+            if($eventJoined){
+                $joined = true;
             }
+            
+            $isOwner = ($eventOwner->id == $user->id);
         }
 
-        $eventOwner = User::where('id', $event->user_id)->first()->toArray();
 
-        return view('events.show', ['event'=>$event, 'eventOwner'=>$eventOwner, 'hasUserJoined'=>$hasUserJoined]);
+
+        return view('events.show', ['event'=>$event, 'eventOwner'=>$eventOwner, 'joined'=>$joined, 'isOwner'=>$isOwner]);
     }
 
     public function store(Request $request){
