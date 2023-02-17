@@ -16,7 +16,56 @@
     padding-top: 15px;
 }
 
-.img-preview{
-    width: 280px;
-    margin-top: 20px;
+#event-create-container .image-group{
+    padding-top: 15px;
+    display: flex;
+}
+
+/* .image-label {
+    border: 2px solid #33f;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #55F;
+    transition-duration: .3s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-label:hover {
+    background-color: #33f;
+    box-shadow: white 2px 2px 1px;
+}
+
+#image{
+    display:none;
+} */
+
+#image{
+    display:none;
+}
+
+.image-label {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: 2px dashed;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: background-color .1s ease-in-out;
+}
+
+.image-label:hover{
+    box-shadow: white 2px 2px 5px;
+}
+
+
+.image-group label, .image-group input{
+    align-self:center;
+}
+
+.img-preview {
+    max-width: 100%;
+    max-height: 216px;
 }

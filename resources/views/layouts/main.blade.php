@@ -17,7 +17,6 @@
         <link href="/css/main.css" rel="stylesheet">
         <link href="/css/@yield('style')" rel="stylesheet">
 
-        <script src="/js/scripts.js"></script>
     </head>
     <body class="antialiased">
         <header>
@@ -82,4 +81,7 @@
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </body>
+
+    <script src="/js/scripts.js"></script>
+    <script src="/js/@yield('js')"></script>
 </html>

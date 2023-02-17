@@ -9,10 +9,16 @@
         <form action="/events/update/{{$event->id}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <div class="form-group">
-                <label for="image">Imagem:</label>
-                <input type="file" class="form-control-file" id="image" name="image">
-                <img src="/img/events/{{$event->image}}" alt="{{$event->title}}" class="img-preview"/>
+            <div class="image-group">
+                <label for="image" class="image-label">
+                    <input type="file" class="form-control-file" id="image" name="image">
+                    <span class="preview">
+                        @if($event->image)
+                            <img src="/img/events/{{$event->image}}" alt="{{$event->title}}" class="img-preview"/>
+                        @endif
+                    </span>
+                </label>
+
             </div>
             <div class="form-group">
                 <label for="title">Evento:</label>
@@ -59,3 +65,5 @@
         </form>
     </div>
 @endsection
+
+@section('js', 'edit.js')
