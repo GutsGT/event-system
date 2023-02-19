@@ -89,45 +89,44 @@ class EventController extends Controller{
         return redirect('/events/list')->with("msg", "Evento criado com sucesso!");
     }
 
-    public function dashboard(){
+    public function myEvents(){
 
-        $user = auth()->user();
-        $events = $user->events;
+        $qttPerPage = 10;
 
-        for($f = 0; $f < count($events); $f++){
-            for($f2 = $f; $f2 < count($events); $f2++){
-                if($events[$f2]->title < $events[$f]->title){
-                    $aux = $events[$f2];
-                    $events[$f2] = $events[$f];
-                    $events[$f] = $aux;
-                }
-            }
-        }
+        $user = User::where('id', '=', auth()->user()->id)
+            ->first();
+        $events = Event::where('user_id', '=', $user->id)
+            ->orderBy('title')
+            ->paginate($qttPerPage);
+        
 
-        $eventsAsParticipant = $user->eventsAsParticipant;
+        return view('events.my_events', ['events'=>$events, 'qttPerPage'=>$qttPerPage]);
+    }
 
-        for($f = 0; $f < count($eventsAsParticipant); $f++){
-            for($f2 = $f; $f2 < count($eventsAsParticipant); $f2++){
-                if($eventsAsParticipant[$f2]->title < $eventsAsParticipant[$f]->title){
-                    $aux = $eventsAsParticipant[$f2];
-                    $eventsAsParticipant[$f2] = $eventsAsParticipant[$f];
-                    $eventsAsParticipant[$f] = $aux;
-                }
-            }
-        }
+    public function schedule(){
 
-        return view('events.dashboard', ['events'=>$events, 'eventsasparticipant'=>$eventsAsParticipant]);
+        $qttPerPage = 10;
+
+        $user = User::where('id', '=', auth()->user()->id)
+            ->first();
+
+        $events = Event::join('event_user', 'event_user.event_id', '=', 'events.id')
+            ->where('event_user.user_id', '=', $user->id)
+            ->orderBy('events.title')
+            ->paginate($qttPerPage);
+
+        return view('events.schedule', ['events'=>$events, 'qttPerPage'=>$qttPerPage]);
     }
 
     public function destroy($id){
 
         if(!$this->userIsEventOwner($id)){
-            return redirect('/dashboard')->with('msg', 'Não é possível excluir evento');
+            return redirect('/my_events')->with('msg', 'Não é possível excluir evento');
         }
 
         Event::findOrFail($id)->delete();
 
-        return redirect('/dashboard')->with('msg', 'Evento excluído com sucesso.');
+        return redirect('/my_events')->with('msg', 'Evento excluído com sucesso.');
     }
 
     public function manage(){
@@ -136,7 +135,7 @@ class EventController extends Controller{
         if(request('id')){
             $id = request('id');
             if(!$this->userIsEventOwner($id)){
-                return redirect('/dashboard')->with('msg', 'Não é possível editar evento');
+                return redirect('/my_events')->with('msg', 'Não é possível editar evento');
             }
     
             $returnArray['event'] = Event::findOrFail($id);
@@ -165,7 +164,7 @@ class EventController extends Controller{
 
         Event::findOrFail($request->id)->update($data);
 
-        return redirect('/dashboard')->with('msg', 'Evento editado com sucesso.');
+        return redirect('/my_events')->with('msg', 'Evento editado com sucesso.');
 
     }
 
@@ -191,6 +190,6 @@ class EventController extends Controller{
         $user->eventsAsParticipant()->detach($id);
 
         $event = Event::findOrFail($id);
-        return redirect('/dashboard')->with('msg', 'Presença removida');
+        return redirect('/my_events')->with('msg', 'Presença removida');
     }
 }

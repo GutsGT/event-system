@@ -43,7 +43,8 @@ Route::put('/events/update/{id}', [EventController::class, 'update'])->middlewar
 
 Route::get('/contact', [ContactController::class, 'index']);
 
-Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
+Route::get('/my_events', [EventController::class, 'myEvents'])->middleware('auth');
+Route::get('/schedule', [EventController::class, 'schedule'])->middleware('auth');
 
 Route::post('/events/join/{id}', [EventController::class, 'joinEvent'])->middleware('auth');
 Route::delete('/events/leave/{id}', [EventController::class, 'leaveEvent'])->middleware('auth');

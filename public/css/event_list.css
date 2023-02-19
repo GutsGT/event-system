@@ -105,35 +105,3 @@
     font-size: 14px;
     color: #757575;
 }
-
-.pagination{
-    place-content: center;
-}
-
-.pagination a {
-    color: white;
-    float: left;
-    padding: 5px 15px;
-    font-size: 20px;
-    text-decoration: none;
-    transition: background-color .3s;
-    margin: 0 4px;
-}
-
-.pagination a:first-child {
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-}
-  
-.pagination a:last-child {
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-}
-  
-.pagination a.active {
-    background-color: #222;
-}
-  
-.pagination a:hover:not(.active) {
-    background-color: #222;
-}

@@ -1,5 +1,8 @@
+<link href="/css/pagination.css" rel="stylesheet">
+
 <?php
-    $lastPage = round($events->total()/$qttPerPage);
+    $lastPage = round(($objects->total())/$qttPerPage);
+
 
     $firstNum = 1;
     if(request('page') > 2){

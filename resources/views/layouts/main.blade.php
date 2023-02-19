@@ -42,8 +42,11 @@
                         </li>
                         @auth
                             <li class="nav-item">
-                                <a href="/dashboard" class="{{Request::is('dashboard')? 'nav-link selected' : 'nav-link'}}">Meus Eventos</a>
-                            </li>    
+                                <a href="/my_events" class="{{Request::is('my_events')? 'nav-link selected' : 'nav-link'}}">Meus Eventos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/schedule" class="{{Request::is('schedule')? 'nav-link selected' : 'nav-link'}}">Agenda</a>
+                            </li>
                             <li class="nav-item">
                                 <form action="/logout" method="post">
                                     @csrf
