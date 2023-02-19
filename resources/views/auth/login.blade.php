@@ -1,5 +1,7 @@
 @extends('layouts.auth')
 
+@section('title', 'Login')
+
 @section('content')
 
     <div class="login-container">
@@ -15,6 +17,8 @@
                 {{session('status')}}
             </div>
         @endif
+
+        <x-jet-validation-errors class="mb-4" />
 
         <div class="form">
             <form method="POST" action="{{ route('login') }}">
