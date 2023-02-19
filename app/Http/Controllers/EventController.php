@@ -164,7 +164,7 @@ class EventController extends Controller{
 
         Event::findOrFail($request->id)->update($data);
 
-        return redirect('/my_events')->with('msg', 'Evento editado com sucesso.');
+        return redirect('/events/'.$request->id)->with('msg', 'Evento editado com sucesso.');
 
     }
 
