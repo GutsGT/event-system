@@ -22,7 +22,7 @@ class EventController extends Controller{
 
         $events = Event::select('events.*', 'event_user.user_id as joined')
             ->leftJoin('event_user', function (JoinClause $join) {
-                $join->on('event_user.event_id', '=', 'events.id')->where('event_user.user_id', '=', auth()->user()->id);
+                $join->on('event_user.event_id', '=', 'events.id')->where('event_user.user_id', '=', (auth()->user()? auth()->user()->id: null));
             })
             ->where([($search? ['title', 'like', '%'.$search.'%']: ['date', '>=', date('Y-m-d')])])
             ->orderBy('date')
