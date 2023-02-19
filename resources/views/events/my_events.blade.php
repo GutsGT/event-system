@@ -23,7 +23,7 @@
                     @foreach($events as $event)
                         <tr>
                             <td><a href="/events/{{$event->id}}" class="table-name">{{$event->title}}</a></td>
-                            <td>{{date_format($event->date, 'd/m/Y h:i')}}</td>
+                            <td>{{date_format($event->date, 'd/m/Y H:i')}}</td>
                             <td>{{count($event->users)}}</td>
                             <td>
                                 <a href="/events/manage?id={{$event->id}}" class="btn edit-btn"><ion-icon name="create-outline"></ion-icon> Editar</a>
