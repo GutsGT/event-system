@@ -190,6 +190,6 @@ class EventController extends Controller{
         $user->eventsAsParticipant()->detach($id);
 
         $event = Event::findOrFail($id);
-        return redirect('/my_events')->with('msg', 'Presença removida');
+        return redirect('/schedule')->with('msg', 'Presença removida');
     }
 }
