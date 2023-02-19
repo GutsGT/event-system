@@ -44,6 +44,11 @@
             <h1>
                 Laravel Project
             </h1>
+            <h3 class="subtitle">
+                <a class="btn btn-primary subtitle-link" href="/events/list">
+                    Ver Eventos
+                </a>
+            </h3>
     </div>
     <!-- <img src="img/banner.jpg" alt="Banner"> -->
     {{-- Exemplo de comentário do Blade --}}
