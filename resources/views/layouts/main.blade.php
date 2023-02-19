@@ -69,7 +69,7 @@
             </nav>
         </header>
         <main>
-            <div class="container-gluid">
+            <div class="container-fluid">
                 <div class="row">
                     @if(session("msg"))
                         <p class="msg">{{ session("msg") }}</p>

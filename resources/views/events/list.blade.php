@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'HDC Events')
+@section('title', 'Listagem de eventos')
 @section('style', 'event_list.css')
 
 @section('content')
