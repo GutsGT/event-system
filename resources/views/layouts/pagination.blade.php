@@ -1,7 +1,7 @@
 <link href="/css/pagination.css" rel="stylesheet">
 
 <?php
-    $lastPage = round(($objects->total())/$qttPerPage);
+    $lastPage = ceil(($objects->total())/$qttPerPage);
 
 
     $firstNum = 1;
@@ -40,6 +40,6 @@
         <a href="/{{request()->path()}}?page={{$lastNum+2}}">...</a>
     @endif
 @endif
-@if(request('page') != $lastPage)
+@if(request('page') != $lastPage && ($lastPage > 1))
     <a href="/{{request()->path()}}?page={{$lastPage}}">&raquo;</a>
 @endif
