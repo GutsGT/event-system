@@ -33,32 +33,6 @@
     border:none;
 }
 
-.edit-btn{
-    background-color: #030;
-    color:white;
-    border: none;
-    transition:revert;
-    transition-duration:.3s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.edit-btn:hover{
-    background-color: #050;
-}
-
-.delete-btn{
-    background-color: #300;
-    color: white;
-    border: none;
-    transition:revert;
-    transition-duration:.3s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.delete-btn:hover{
-    background-color: #500;
-}
-
 .table-name:hover{
     color: #fff;
     text-shadow:#aaa 2px 2px 5px;

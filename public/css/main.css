@@ -36,6 +36,22 @@ header{
     padding:0;
 }
 
+.container-fluid .subtitle{
+    margin-top: 100px;
+    text-decoration-line: underline;
+}
+
+.container-fluid .subtitle-link{
+    width: 25%;
+    font-family: 'Pacifico';
+    background-color: black;
+    transition: text-shadow .3s, box-shadow .3s, background-color .3s;
+}
+.container-fluid .subtitle-link:hover{
+    text-shadow: #33f 2px 2px 3px;
+    background-color: #000080;
+}
+
 .btn-primary{
     background-color: #55f;
     border: 2px solid #33f;
@@ -108,6 +124,32 @@ header{
 .navbar .nav-item .selected{
     color:#55f;
 }
+
+.edit-btn{
+    background-color: #090;
+    color:white;
+    border: 1px solid #0f0;
+    transition:ease .3s;
+    margin-right:5px;
+}
+
+.edit-btn:hover {
+    background-color: #070;
+    box-shadow: white 2px 2px 1px;
+}
+
+.delete-btn{
+    background-color: #300;
+    border: 1px solid #f00;
+    color: white;
+    transition:ease .3s;
+}
+
+.delete-btn:hover{
+    background-color: #500;
+    box-shadow: white 2px 2px 1px;
+}
+
 
 @media screen and (max-width: 600px) {
     .menu {

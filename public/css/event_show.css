@@ -22,33 +22,6 @@
     display: flex;
 }
 
-.edit-btn{
-    background-color: #030;
-    color:white;
-    border: none;
-    transition:revert;
-    transition-duration:.3s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    margin-right:10px;
-}
-
-.edit-btn:hover{
-    background-color: #050;
-}
-
-.delete-btn{
-    background-color: #300;
-    color: white;
-    border: none;
-    transition:revert;
-    transition-duration:.3s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.delete-btn:hover{
-    background-color: #500;
-}
-
 #image-container h1{
     font-size: 36px;
     font-weight: 900;

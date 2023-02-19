@@ -18,11 +18,12 @@
 }
 
 .table .participants{
-    width:20%;
+    width: 111px;
 }
 
-.table .actions{
-    width:20%;
+.table .actions {
+    width: 20%;
+    min-width: 209px;
 }
 
 .table thead tr th, .table tbody tr td{
@@ -31,32 +32,6 @@
 
 .table tbody tr:last-child td{
     border:none;
-}
-
-.edit-btn{
-    background-color: #030;
-    color:white;
-    border: none;
-    transition:revert;
-    transition-duration:.3s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.edit-btn:hover{
-    background-color: #050;
-}
-
-.delete-btn{
-    background-color: #300;
-    color: white;
-    border: none;
-    transition:revert;
-    transition-duration:.3s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.delete-btn:hover{
-    background-color: #500;
 }
 
 .table-name:hover{
