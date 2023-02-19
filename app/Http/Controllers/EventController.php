@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use App\Models\User;
+use Illuminate\Database\Query\JoinClause;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller{
 
@@ -16,16 +18,19 @@ class EventController extends Controller{
 
         $search = request('search');
 
-        $events = Event::where([
-            ($search? ['title', 'like', '%'.$search.'%']: ['date', '>=', date('Y-m-d')])
-        ])->orderBy('date')->paginate(12);
+        $qttPerPage = 12;
 
-        $returnArray = ['events'=>$events, 'search'=>$search];
+        $events = Event::select('events.*', 'event_user.user_id as joined')
+            ->leftJoin('event_user', function (JoinClause $join) {
+                $join->on('event_user.event_id', '=', 'events.id')->where('event_user.user_id', '=', auth()->user()->id);
+            })
+            ->where([($search? ['title', 'like', '%'.$search.'%']: ['date', '>=', date('Y-m-d')])])
+            ->orderBy('date')
+            ->paginate($qttPerPage);
+        
 
-        if(auth()->user()){
-            $user = auth()->user();
-            $returnArray[] = $user->eventsAsParticipant->toArray();
-        }
+        $returnArray = ['events'=>$events, 'search'=>$search, 'qttPerPage'=>$qttPerPage];
+
 
         return view('events.list', $returnArray);
     }

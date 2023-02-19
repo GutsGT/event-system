@@ -3,7 +3,6 @@
 @section('title', 'HDC Events')
 @section('style', 'event_list.css')
 
-
 @section('content')
     <div id="search-container">
         <h1>Buscar evento</h1>
@@ -27,7 +26,18 @@
                 <div class="card-body">
                     <p class="card-date">{{date('d/m/Y', strtotime($event->date))}}</p>
                     <h5 class="card-title">{{ $event->title }}</h5>
-                    <p class="card-participants">{{count($event->users)}} participante(s)</p>
+                    <div class="participants">
+                        <p class="card-participants">
+                            @if(count($event->users) == 1)
+                                {{count($event->users)}} participante
+                            @else
+                                {{count($event->users)}} participantes
+                            @endif
+                        </p>
+                        @if(auth()->user() && $event->joined == auth()->user()->id)
+                            <p class="card-participants joined">(Participando)</p>
+                        @endif
+                    </div>
                     <a href="/events/{{$event->id}}" class="btn btn-primary">Saber mais</a>
                 </div>
             </div>
@@ -40,15 +50,8 @@
         </div>
         @if($events->total() >= 12)
             <div class="pagination">
-                @if(request('page') && request('page') != 1)
-                    <a href="/events/list?page=1">&laquo;</a>
-                @endif
-                @for($i = 0; $i < round($events->total()/12); $i++)
-                    <a href="/events/list?page={{$i+1}}" class="@if(request('page') == $i+1) active @endif">{{$i+1}}</a>
-                @endfor
-            @if(request('page') != round($events->total()/12))
-                <a href="/events/list?page={{round($events->total()/12)}}">&raquo;</a>
-            @endif
+                @include('layouts.pagination', ['qttPerPage'=>$qttPerPage])
+            </div>
         @endif
     </div>
 @endsection
