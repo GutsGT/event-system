@@ -35,7 +35,7 @@
     @endfor
     @if($lastNum < $lastPage)
         @if($lastNum+1 == $lastPage)
-            <a href="/{{request()->path()}}?page={{$lastNum+2}}">{{$lastPage}}</a>
+            <a href="/{{request()->path()}}?page={{$lastNum+1}}">{{$lastPage}}</a>
         @else
             <a href="/{{request()->path()}}?page={{$lastNum+2}}">...</a>
         @endif

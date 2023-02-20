@@ -24,7 +24,7 @@ class EventFactory extends Factory
         $dateArray = [];
 
         foreach($daterange as $date){
-            $dateArray[] = $date->format('Y-m-d h:i:s');
+            $dateArray[] = $date->format('Y-m-d h'.'00:00');
         }
 
         return [
