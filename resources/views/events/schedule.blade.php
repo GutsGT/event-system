@@ -39,9 +39,7 @@
                 </tbody>
             </table>
             @if($events->total() > $qttPerPage)
-                <div class="pagination">
-                    @include('layouts.pagination', ['objects'=>$events, 'qttPerPage'=>$qttPerPage])
-                </div>
+                @include('layouts.pagination', ['objects'=>$events, 'qttPerPage'=>$qttPerPage])
             @endif
         @else
             <p>Você ainda não está participando de nenhum evento, <a href="/events/myevents">Veja todos os eventos</a>.</p>

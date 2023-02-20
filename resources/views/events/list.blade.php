@@ -49,9 +49,8 @@
         @endif
         </div>
         @if($events->total() >= 12)
-            <div class="pagination">
-                @include('layouts.pagination', ['objects'=>$events, 'qttPerPage'=>$qttPerPage])
-            </div>
+            @include('layouts.pagination', ['objects'=>$events, 'qttPerPage'=>$qttPerPage])
+            
         @endif
     </div>
 @endsection

@@ -19,27 +19,28 @@
         $lastNum = $lastPage;
     }
 ?>
-
-@if(request('page') && request('page') != 1)
-    <a href="/{{request()->path()}}?page=1">&laquo;</a>
-@endif
-@if($firstNum > 1)
-    @if($firstNum == 2)
-    <a href="/{{request()->path()}}?page=1">1</a>
-    @else
-        <a href="/{{request()->path()}}?page={{$firstNum-2}}">...</a>
+<div class="pagination">
+    @if(request('page') && request('page') != 1)
+        <a href="/{{request()->path()}}?page=1">&laquo;</a>
     @endif
-@endif
-@for($i = $firstNum; $i <= $lastPage && $i < $firstNum+3; $i++)
-    <a href="/{{request()->path()}}?page={{$i}}" class="@if(request('page') == $i || (!request('page') && $i == 1)) active @endif">{{$i}}</a>
-@endfor
-@if($lastNum < $lastPage)
-    @if($lastNum+1 == $lastPage)
-        <a href="/{{request()->path()}}?page={{$lastNum+2}}">{{$lastPage}}</a>
-    @else
-        <a href="/{{request()->path()}}?page={{$lastNum+2}}">...</a>
+    @if($firstNum > 1)
+        @if($firstNum == 2)
+        <a href="/{{request()->path()}}?page=1">1</a>
+        @else
+            <a href="/{{request()->path()}}?page={{$firstNum-2}}">...</a>
+        @endif
     @endif
-@endif
-@if(request('page') != $lastPage && ($lastPage > 1))
-    <a href="/{{request()->path()}}?page={{$lastPage}}">&raquo;</a>
-@endif
+    @for($i = $firstNum; $i <= $lastPage && $i < $firstNum+3; $i++)
+        <a href="/{{request()->path()}}?page={{$i}}" class="@if(request('page') == $i || (!request('page') && $i == 1)) active @endif">{{$i}}</a>
+    @endfor
+    @if($lastNum < $lastPage)
+        @if($lastNum+1 == $lastPage)
+            <a href="/{{request()->path()}}?page={{$lastNum+2}}">{{$lastPage}}</a>
+        @else
+            <a href="/{{request()->path()}}?page={{$lastNum+2}}">...</a>
+        @endif
+    @endif
+    @if(request('page') != $lastPage && ($lastPage > 1))
+        <a href="/{{request()->path()}}?page={{$lastPage}}">&raquo;</a>
+    @endif
+</div>
