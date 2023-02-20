@@ -22,11 +22,11 @@
                 <tbody>
                     @foreach($events as $event)
                         <tr>
-                            <td><a href="/events/{{$event->id}}" class="table-name">{{$event->title}}</a></td>
+                            <td><a href="/events/{{$event->title}}" class="table-name">{{$event->title}}</a></td>
                             <td>{{date_format($event->date, 'd/m/Y H:i')}}</td>
                             <td>{{count($event->users)}}</td>
                             <td>
-                                <form action="/events/leave/{{$event->id}}" method="POST">
+                                <form action="/events/leave/{{$event->title}}" method="POST">
                                     @csrf
                                     @method("DELETE")
                                     <button type="submit" class="btn btn-danger delete-btn">

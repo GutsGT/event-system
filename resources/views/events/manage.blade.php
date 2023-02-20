@@ -16,7 +16,7 @@
         @else
             <h1>Criando evento</h1>
         @endif
-        <form action="@if(isset($event)) /events/update/{{$event->id}} @else /events @endif" method="POST" enctype="multipart/form-data">
+        <form action="@if(isset($event)) /events/update/{{$event->title}} @else /events @endif" method="POST" enctype="multipart/form-data">
             @csrf
 
             @if(isset($event))
@@ -25,7 +25,6 @@
                 <?php
                     $event = new App\Models\Event();
                     $event->image = $event->title = $event->date = $event->city = $event->description = "";
-                    
                 ?>
             @endif
 

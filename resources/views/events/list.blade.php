@@ -20,7 +20,7 @@
     <div id="events-container">
         @foreach($events as $event)
             <div class="card">
-                <a href="/events/{{$event->id}}" class="card-link">
+                <a href="/events/{{$event->title}}" class="card-link">
                     <div class="card-image" style="@if($event->image)background-image: url(/img/events/{{$event->image}}) @endif"></div>
                 </a>
                 <div class="card-body">
@@ -38,7 +38,7 @@
                             <p class="card-participants joined">(Participando)</p>
                         @endif
                     </div>
-                    <a href="/events/{{$event->id}}" class="btn btn-primary">Saber mais</a>
+                    <a href="/events/{{$event->title}}" class="btn btn-primary">Saber mais</a>
                 </div>
             </div>
         @endforeach

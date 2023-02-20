@@ -15,8 +15,8 @@
                 @endif
                 @if($isOwner)
                     <div class="btn-container">
-                        <a href="/events/manage?id={{$event->id}}" class="btn edit-btn"><ion-icon name="create-outline" role="img" class="md hydrated" aria-label="create outline"></ion-icon> Editar</a>
-                        <form action="/events/{{$event->id}}" method="POST">
+                        <a href="/events/manage?title={{$event->title}}" class="btn edit-btn"><ion-icon name="create-outline" role="img" class="md hydrated" aria-label="create outline"></ion-icon> Editar</a>
+                        <form action="/events/{{$event->title}}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn delete-btn"><ion-icon name="trash-outline" role="img" class="md hydrated" aria-label="trash outline"></ion-icon> Deletar</button>

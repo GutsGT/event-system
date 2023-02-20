@@ -22,12 +22,12 @@
                 <tbody>
                     @foreach($events as $event)
                         <tr>
-                            <td><a href="/events/{{$event->id}}" class="table-name">{{$event->title}}</a></td>
+                            <td><a href="/events/{{$event->title}}" class="table-name">{{$event->title}}</a></td>
                             <td>{{date_format($event->date, 'd/m/Y H:i')}}</td>
                             <td>{{count($event->users)}}</td>
                             <td>
-                                <a href="/events/manage?id={{$event->id}}" class="btn edit-btn"><ion-icon name="create-outline"></ion-icon> Editar</a>
-                                <form action="/events/{{$event->id}}" method="POST">
+                                <a href="/events/manage?title={{$event->title}}" class="btn edit-btn"><ion-icon name="create-outline"></ion-icon> Editar</a>
+                                <form action="/events/{{$event->title}}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn delete-btn"><ion-icon name="trash-outline"></ion-icon> Deletar</button>

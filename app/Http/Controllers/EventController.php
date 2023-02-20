@@ -35,9 +35,7 @@ class EventController extends Controller{
         return view('events.list', $returnArray);
     }
 
-    public function show($id){
-
-        $event = Event::findOrFail($id);
+    public function show(Event $event){
         $eventOwner = User::where('id', '=', $event->user_id)->first();
 
         $user = auth()->user();
@@ -46,7 +44,7 @@ class EventController extends Controller{
 
 
         if($user){
-            $eventJoined = Event::where('events.id', '=', $id)
+            $eventJoined = Event::where('events.title', '=', $event->id)
                 ->where('event_user.user_id', '=', $user->id)
                 ->join('event_user', 'event_id', '=', 'id')->first();
 
@@ -63,6 +61,10 @@ class EventController extends Controller{
     }
 
     public function store(Request $request){
+
+        $request->validate([
+            'title'=>'required|unique:events|max:70'
+        ]);
 
         $event = new Event;
         $event->title = $request->title;
@@ -118,13 +120,13 @@ class EventController extends Controller{
         return view('events.schedule', ['events'=>$events, 'qttPerPage'=>$qttPerPage]);
     }
 
-    public function destroy($id){
+    public function destroy(Event $event){
 
-        if(!$this->userIsEventOwner($id)){
+        if(!$this->userIsEventOwner($event)){
             return redirect('/my_events')->with('msg', 'Não é possível excluir evento');
         }
 
-        Event::findOrFail($id)->delete();
+        Event::findOrFail($event->id)->delete();
 
         return redirect('/my_events')->with('msg', 'Evento excluído com sucesso.');
     }
@@ -132,24 +134,29 @@ class EventController extends Controller{
     public function manage(){
 
         $returnArray = [];
-        if(request('id')){
-            $id = request('id');
-            if(!$this->userIsEventOwner($id)){
+        if(request('title')){
+            $event = Event::where('title', '=', request('title'))->first();
+            if(!$this->userIsEventOwner($event)){
                 return redirect('/my_events')->with('msg', 'Não é possível editar evento');
             }
     
-            $returnArray['event'] = Event::findOrFail($id);
+            $returnArray['event'] = $event;
         }
 
         return view('events.manage', $returnArray);
     }
 
-    public function update(Request $request){
+    public function update(Event $event, Request $request){
+
+        $request->validate([
+            'title'=>'required|unique:events|max:70'
+        ]);
+
+
         $data = $request->all();
         if($request->hasFile('image') && $request->file('image')->isValid()){
             
             //Comando para apagar a imagem anterior
-            $event = Event::findOrFail($request->id);
             if($event->image){
                 unlink(public_path('img/events/'.$event->image));
             }
@@ -162,34 +169,30 @@ class EventController extends Controller{
             $data['image'] = $imageName;
         }
 
-        Event::findOrFail($request->id)->update($data);
+        $event->update($data);
 
-        return redirect('/events/'.$request->id)->with('msg', 'Evento editado com sucesso.');
+        return redirect('/events/'.$event->title)->with('msg', 'Evento editado com sucesso.');
 
     }
 
-    public function joinEvent($id){
+    public function joinEvent(Event $event){
         $user = auth()->user();
 
-        $user->eventsAsParticipant()->attach($id);
+        $user->eventsAsParticipant()->attach($event->id);
 
-        $event = Event::findOrFail($id);
-
-        return redirect("/events/$id")->with('msg', 'Presença confirmada');
+        return redirect("/events/$event->title")->with('msg', 'Presença confirmada');
     }
 
-    private function userIsEventOwner($id){
+    private function userIsEventOwner(Event $event){
         $user = auth()->user();
-        $event = Event::findOrFail($id);
 
         return ($user->id == $event->user_id);
     } 
 
-    public function leaveEvent($id){
+    public function leaveEvent(Event $event){
         $user = auth()->user();
-        $user->eventsAsParticipant()->detach($id);
+        $user->eventsAsParticipant()->detach($event->id);
 
-        $event = Event::findOrFail($id);
         return redirect('/schedule')->with('msg', 'Presença removida');
     }
 }
