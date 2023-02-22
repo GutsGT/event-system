@@ -13,10 +13,28 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col" class="name">Nome</th>
-                        <th scope="col" class="date">Data</th>
-                        <th scope="col" class="participants">Participantes</th>
-                        <th scope="col" class="actions">Ações</th>
+                        <th scope="col" class="name">
+                            <a href="/schedule?order=title">
+                                Nome
+                                @if(request('order') == 'title')
+                                    <ion-icon class="drop-down" name="caret-down-outline"></ion-icon>
+                                @endif
+                            </a>
+                        </th>
+                        <th scope="col" class="date">
+                            <a href="/schedule?order=date">
+                                Data
+                                @if(request('order') == 'date')
+                                    <ion-icon class="drop-down" name="caret-down-outline"></ion-icon>
+                                @endif
+                            </a>
+                        </th>
+                        <th scope="col" class="participants">
+                            Participantes
+                        </th>
+                        <th scope="col" class="actions">
+                            Ações
+                        </th>
                     </tr>
                 </thead>
                 <tbody>

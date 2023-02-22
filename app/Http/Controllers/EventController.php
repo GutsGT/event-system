@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller{
 
+    
     public function index(){
         return view('welcome');
     }
@@ -97,8 +98,17 @@ class EventController extends Controller{
 
         $user = User::where('id', '=', auth()->user()->id)
             ->first();
-        $events = Event::where('user_id', '=', $user->id)
-            ->orderBy('title')
+
+        $order = [
+            (request('order')? request('order'): 'date'), 
+            (request('order') == 'participants')? 'desc': 'asc'
+        ];
+        
+        $events = Event::select(DB::raw('events.*, count(event_user.event_id) as participants'))
+            ->join('event_user', 'event_user.event_id', '=', 'events.id')
+            ->where('events.user_id', '=', $user->id)
+            ->groupBy('event_user.event_id')
+            ->orderBy($order[0], $order[1])
             ->paginate($qttPerPage);
         
 
@@ -111,11 +121,21 @@ class EventController extends Controller{
 
         $user = User::where('id', '=', auth()->user()->id)
             ->first();
+        
+        $order = [
+            (request('order')? request('order'): 'date'), 
+            (request('order') == 'participants')? 'desc': 'asc'
+        ];
 
-        $events = Event::join('event_user', 'event_user.event_id', '=', 'events.id')
+        $events = Event::select('*')
+            ->join('event_user', 'event_user.event_id', '=', 'events.id')
             ->where('event_user.user_id', '=', $user->id)
-            ->orderBy('events.title')
+            ->orderBy($order[0], $order[1])
             ->paginate($qttPerPage);
+        
+        foreach($events as $event){
+            $event->participants = count($event->users);
+        }
 
         return view('events.schedule', ['events'=>$events, 'qttPerPage'=>$qttPerPage]);
     }

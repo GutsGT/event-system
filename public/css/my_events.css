@@ -18,12 +18,16 @@
 }
 
 .table .participants{
-    width: 111px;
+    width: 131px;
 }
 
 .table .actions {
     width: 20%;
     min-width: 209px;
+}
+
+.table .drop-down{
+    vertical-align:middle;
 }
 
 .table thead tr th, .table tbody tr td{

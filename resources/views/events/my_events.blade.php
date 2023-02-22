@@ -13,10 +13,33 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col" class="name">Nome</th>
-                        <th scope="col" class="date">Data</th>
-                        <th scope="col" class="participants">Participantes</th>
-                        <th scope="col" class="actions">Ações</th>
+                        <th scope="col" class="name">
+                            <a href="/my_events?order=title">
+                                Nome
+                                @if(request('order') == 'title')
+                                    <ion-icon class="drop-down" name="caret-down-outline"></ion-icon>
+                                @endif
+                            </a>
+                        </th>
+                        <th scope="col" class="date">
+                            <a href="/my_events?order=date">
+                                Data
+                                @if(request('order') == 'date')
+                                    <ion-icon class="drop-down" name="caret-down-outline"></ion-icon>
+                                @endif
+                            </a>
+                        </th>
+                        <th scope="col" class="participants">
+                            <a href="/my_events?order=participants">
+                                Participantes
+                                @if(request('order') == 'participants')
+                                    <ion-icon class="drop-down" name="caret-down-outline"></ion-icon>
+                                @endif
+                            </a>
+                        </th>
+                        <th scope="col" class="actions">
+                            Ações
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,7 +47,7 @@
                         <tr>
                             <td><a href="/events/{{$event->title}}" class="table-name">{{$event->title}}</a></td>
                             <td>{{date_format($event->date, 'd/m/Y H:i')}}</td>
-                            <td>{{count($event->users)}}</td>
+                            <td>{{$event->participants}}</td>
                             <td>
                                 <a href="/events/manage?title={{$event->title}}" class="btn edit-btn"><ion-icon name="create-outline"></ion-icon> Editar</a>
                                 <form action="/events/{{$event->title}}" method="POST">
