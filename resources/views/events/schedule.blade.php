@@ -5,6 +5,19 @@
 
 @section('content')
 
+@php
+    if(request()->has('dir')){
+        if(request('dir') == 'asc'){
+            $dir = 'desc';
+        }else{
+            $dir = 'asc';
+        }
+
+    }else{
+        $dir = 'asc';
+    }
+@endphp
+
     <div class="col-md-10 offset-md-1 title-container">
         <h1>Eventos com presença confirmada</h1>
     </div>
@@ -14,18 +27,18 @@
                 <thead>
                     <tr>
                         <th scope="col" class="name">
-                            <a href="/schedule?order=title">
+                            <a href="/schedule?order=title&dir={{$dir}}">
                                 Nome
                                 @if(request('order') == 'title')
-                                    <ion-icon class="drop-down" name="caret-down-outline"></ion-icon>
+                                    <ion-icon class="order" name="{{($dir == 'desc')?'caret-down-outline':'caret-up-outline'}}"></ion-icon>
                                 @endif
                             </a>
                         </th>
                         <th scope="col" class="date">
-                            <a href="/schedule?order=date">
+                            <a href="/schedule?order=date&dir={{$dir}}">
                                 Data
                                 @if(request('order') == 'date')
-                                    <ion-icon class="drop-down" name="caret-down-outline"></ion-icon>
+                                    <ion-icon class="order" name="{{($dir == 'desc')?'caret-down-outline':'caret-up-outline'}}"></ion-icon>
                                 @endif
                             </a>
                         </th>

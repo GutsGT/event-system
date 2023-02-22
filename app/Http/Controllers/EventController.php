@@ -92,16 +92,15 @@ class EventController extends Controller{
         return redirect('/events/list')->with("msg", "Evento criado com sucesso!");
     }
 
-    public function myEvents(){
+    public function myEvents(Request $request){
 
         $qttPerPage = 10;
 
-        $user = User::where('id', '=', auth()->user()->id)
-            ->first();
+        $user = auth()->user();
 
         $order = [
             (request('order')? request('order'): 'date'), 
-            (request('order') == 'participants')? 'desc': 'asc'
+            (request('dir')? request('dir'): 'asc')
         ];
         
         $events = Event::select(DB::raw('events.*, count(event_user.event_id) as participants'))
@@ -119,12 +118,11 @@ class EventController extends Controller{
 
         $qttPerPage = 10;
 
-        $user = User::where('id', '=', auth()->user()->id)
-            ->first();
+        $user = auth()->user();
         
         $order = [
             (request('order')? request('order'): 'date'), 
-            (request('order') == 'participants')? 'desc': 'asc'
+            (request('dir')? request('dir'): 'asc')
         ];
 
         $events = Event::select('*')

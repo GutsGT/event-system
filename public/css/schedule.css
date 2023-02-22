@@ -25,6 +25,10 @@
     width:20%;
 }
 
+.table .order{
+    vertical-align:middle;
+}
+
 .table thead tr th, .table tbody tr td{
     text-align:center;
 }

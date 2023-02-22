@@ -5,6 +5,19 @@
 
 @section('content')
 
+@php
+    if(request()->has('dir')){
+        if(request('dir') == 'asc'){
+            $dir = 'desc';
+        }else{
+            $dir = 'asc';
+        }
+
+    }else{
+        $dir = 'asc';
+    }
+@endphp
+
     <div class="col-md-10 offset-md-1 title-container">
         <h1>Meus Eventos</h1>
     </div>
@@ -14,26 +27,26 @@
                 <thead>
                     <tr>
                         <th scope="col" class="name">
-                            <a href="/my_events?order=title">
+                            <a href="/my_events?order=title&dir={{$dir}}">
                                 Nome
                                 @if(request('order') == 'title')
-                                    <ion-icon class="drop-down" name="caret-down-outline"></ion-icon>
+                                    <ion-icon class="order" name="{{($dir == 'desc')?'caret-down-outline':'caret-up-outline'}}"></ion-icon>
                                 @endif
                             </a>
                         </th>
                         <th scope="col" class="date">
-                            <a href="/my_events?order=date">
+                            <a href="/my_events?order=date&dir={{$dir}}">
                                 Data
                                 @if(request('order') == 'date')
-                                    <ion-icon class="drop-down" name="caret-down-outline"></ion-icon>
+                                    <ion-icon class="order" name="{{($dir == 'desc')?'caret-down-outline':'caret-up-outline'}}"></ion-icon>
                                 @endif
                             </a>
                         </th>
                         <th scope="col" class="participants">
-                            <a href="/my_events?order=participants">
+                            <a href="/my_events?order=participants&dir={{$dir}}">
                                 Participantes
                                 @if(request('order') == 'participants')
-                                    <ion-icon class="drop-down" name="caret-down-outline"></ion-icon>
+                                    <ion-icon class="order" name="{{($dir == 'desc')?'caret-down-outline':'caret-up-outline'}}"></ion-icon>
                                 @endif
                             </a>
                         </th>
@@ -63,6 +76,8 @@
             @if($events->total() > $qttPerPage)
                 @include('layouts.pagination', ['objects'=>$events, 'qttPerPage'=>$qttPerPage])
             @endif
+
+            {{request('old')}}
         @else
             <p>Você ainda não tem eventos, <a href="/events/manage">Criar evento</a></p>
         @endif
