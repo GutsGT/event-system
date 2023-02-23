@@ -63,10 +63,6 @@ class EventController extends Controller{
 
     public function store(Request $request){
 
-        $request->validate([
-            'title'=>'required|unique:events|max:70'
-        ]);
-
         $event = new Event;
         $event->title = $request->title;
         $event->date = $request->date;
@@ -92,7 +88,7 @@ class EventController extends Controller{
         return redirect('/events/list')->with("msg", "Evento criado com sucesso!");
     }
 
-    public function myEvents(Request $request){
+    public function myEvents(){
 
         $qttPerPage = 10;
 
@@ -167,10 +163,6 @@ class EventController extends Controller{
     }
 
     public function update(Event $event, Request $request){
-
-        $request->validate([
-            'title'=>'required|unique:events|max:70'
-        ]);
 
 
         $data = $request->all();
