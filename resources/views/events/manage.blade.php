@@ -66,7 +66,11 @@
             </div>
             <div class="form-group">
                 <label for="title">Adicione itens de infraestrutura:</label>
-
+                @php
+                    if(!$event->items){
+                        $event->items = [];
+                    }
+                @endphp
                 <div class="form-group">
                     <input type="checkbox" 
                         name="items[]" 
