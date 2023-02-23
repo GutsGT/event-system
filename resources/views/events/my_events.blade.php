@@ -43,12 +43,7 @@
                             </a>
                         </th>
                         <th scope="col" class="participants">
-                            <a href="/my_events?order=participants&dir={{$dir}}">
-                                Participantes
-                                @if(request('order') == 'participants')
-                                    <ion-icon class="order" name="{{($dir == 'desc')?'caret-down-outline':'caret-up-outline'}}"></ion-icon>
-                                @endif
-                            </a>
+                            Participantes
                         </th>
                         <th scope="col" class="actions">
                             Ações
