@@ -66,20 +66,56 @@
             </div>
             <div class="form-group">
                 <label for="title">Adicione itens de infraestrutura:</label>
+
                 <div class="form-group">
-                    <input type="checkbox" name="items[]" value="Cadeiras"/> Cadeiras
+                    <input type="checkbox" 
+                        name="items[]" 
+                        value="Cadeiras" 
+                        @if(in_array('Cadeiras', $event->items))
+                            checked
+                        @endif
+                    /> 
+                    Cadeiras
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" name="items[]" value="Palco"/> Palco
+                    <input type="checkbox" 
+                        name="items[]" 
+                        value="Palco" 
+                        @if(in_array('Palco', $event->items))
+                            checked
+                        @endif
+                    /> 
+                    Palco
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" name="items[]" value="Cerveja grátis"/> Cerveja Grátis
+                    <input type="checkbox" 
+                        name="items[]" 
+                        value="Cerveja grátis" 
+                        @if(in_array('Cerveja grátis', $event->items))
+                            checked
+                        @endif
+                    /> 
+                    Cerveja Grátis
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" name="items[]" value="Open food"/> Open food
+                    <input type="checkbox" 
+                        name="items[]" 
+                        value="Open food" 
+                        @if(in_array('Open food', $event->items))
+                            checked
+                        @endif
+                    /> 
+                    Open food
                 </div>
                 <div class="form-group">
-                    <input type="checkbox" name="items[]" value="Brindes"/> Brindes
+                    <input type="checkbox" 
+                        name="items[]" 
+                        value="Brindes" 
+                        @if(in_array('Brindes', $event->items))
+                            checked
+                        @endif
+                    /> 
+                    Brindes
                 </div>
             </div>
             <input type="submit" class="btn btn-primary" value="Editar evento">
