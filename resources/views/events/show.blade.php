@@ -50,9 +50,9 @@
                     @endif
                 </ul>
                 @if(!$joined)
-                    <form action="/events/join/{{$event->id}}" method="POST">
+                    <form action="/events/join/{{$event->title}}" method="POST">
                         @csrf
-                        <a href="/events/join/{{$event->id}}" 
+                        <a href="/events/join/{{$event->title}}" 
                             class="btn btn-primary" 
                             id="event-submit" 
                             onclick="event.preventDefault(); this.closest('form').submit();"

@@ -45,7 +45,7 @@ class EventController extends Controller{
 
 
         if($user){
-            $eventJoined = Event::where('events.title', '=', $event->id)
+            $eventJoined = Event::where('events.title', '=', $event->title)
                 ->where('event_user.user_id', '=', $user->id)
                 ->join('event_user', 'event_id', '=', 'id')->first();
 
@@ -103,12 +103,14 @@ class EventController extends Controller{
             (request('dir')? request('dir'): 'asc')
         ];
         
-        $events = Event::select(DB::raw('events.*, count(event_user.event_id) as participants'))
-            ->join('event_user', 'event_user.event_id', '=', 'events.id')
+        $events = Event::select(DB::raw('events.*'))
             ->where('events.user_id', '=', $user->id)
-            ->groupBy('event_user.event_id')
             ->orderBy($order[0], $order[1])
             ->paginate($qttPerPage);
+        
+        foreach($events as $event){
+            $event->participants = count($event->users);
+        }
         
 
         return view('events.my_events', ['events'=>$events, 'qttPerPage'=>$qttPerPage]);
