@@ -24,7 +24,7 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div>
-                    <input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus placeholder="Email" />
+                    <input id="email" class="block mt-1 w-full" type="email" name="email" required autofocus placeholder="Email" :value="{{old('email')}}" />
                 </div>
     
                 <div class="mt-4">
