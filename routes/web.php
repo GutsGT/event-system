@@ -3,8 +3,6 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\ProductController;
-use GuzzleHttp\Psr7\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,7 +47,3 @@ Route::get('/schedule', [EventController::class, 'schedule'])->middleware('auth'
 
 Route::post('/events/join/{event:title}', [EventController::class, 'joinEvent'])->middleware('auth');
 Route::delete('/events/leave/{event:title}', [EventController::class, 'leaveEvent'])->middleware('auth');
-
-// Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
-// Route::post('/login', [AuthController::class, 'entry'])->name('auth.entry');
-// Route::get('/register', [AuthController::class, 'register']);
