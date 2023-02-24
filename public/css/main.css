@@ -28,6 +28,14 @@ header{
     border-bottom: 1px solid grey;
 }
 
+#loading {
+    text-shadow: blue 5px 5px 10px;
+    font-size: 30px;
+    margin: 150px 0%;
+    width: 100%;
+    text-align: center;
+}
+
 .row{
     margin:0;
 }
