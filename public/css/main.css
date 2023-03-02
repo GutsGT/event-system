@@ -108,11 +108,22 @@ header{
 .navbar a {
     color: #fff;
     letter-spacing: 1px;
+    transition: ease .3s;
+    border-bottom: black solid 1px;
 }
-.navbar a:hover{color: #55f;}
+
+.navbar a:hover {
+    color: #55f;
+    border-bottom-color: #55f;
+}
+
+.navbar .logo{
+    border:none;
+}
 
 .navbar .logo svg{
     width:50px;
+    transition: ease .3s;
 }
 .navbar .logo svg:hover{
     fill: #55f;
