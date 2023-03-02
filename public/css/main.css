@@ -12,6 +12,7 @@ html{
     box-sizing:border-box;border:0 solid #e2e8f0
 }
 
+
 body{
     min-height:100vh;
     padding-bottom: 100px;
@@ -53,7 +54,7 @@ header{
     width: 25%;
     font-family: 'Pacifico';
     background-color: black;
-    transition: text-shadow .3s, box-shadow .3s, background-color .3s;
+    transition: ease .3s;
 }
 .container-fluid .subtitle-link:hover{
     text-shadow: #33f 2px 2px 3px;
@@ -64,9 +65,7 @@ header{
     background-color: #55f;
     border: 2px solid #33f;
     margin-top:10px;
-    transition:revert;
-    transition-duration:.3s;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition: ease .3s;
 }
 
 .btn-primary:hover{
@@ -142,6 +141,11 @@ header{
 
 .navbar .nav-item .selected{
     color:#55f;
+}
+
+.list .out .nav-link:hover{
+    color: #f00;
+    border-bottom-color: #f00;
 }
 
 .edit-btn{
