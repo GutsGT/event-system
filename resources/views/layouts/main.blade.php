@@ -52,7 +52,7 @@
                                 <li class="nav-item">
                                     <a href="/schedule" class="{{Request::is('schedule')? 'nav-link selected' : 'nav-link'}}">Agenda</a>
                                 </li>
-                                <li class="nav-item out">
+                                <li class="nav-item">
                                     <form action="/logout" method="post">
                                         @csrf
                                         <a href="/logout" class="nav-link" onclick="event.preventDefault(); this.closest('form').submit();">

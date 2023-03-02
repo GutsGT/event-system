@@ -18,7 +18,7 @@
 }
 
 .table .participants{
-    width: 131px;
+    width: min-content;
 }
 
 .table .actions {
@@ -45,4 +45,13 @@
 .table-name:hover{
     color: #fff;
     text-shadow:#aaa 2px 2px 3px;
+}
+
+@media (max-width:600px){
+    /* .table .participants{
+        display:none;
+    }
+    .table tbody tr td:nth-child(3){
+        display:none;
+    } */
 }

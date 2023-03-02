@@ -2265,6 +2265,7 @@ select {
 
 .login-container .logo svg{
   fill:white;
+  transition: ease .3s;
 }
 .login-container .logo svg:hover{
   fill: #55f;
@@ -2294,11 +2295,10 @@ select {
   padding: 8px 16px;
   font-size:12px;
   text-transform:uppercase;
-  transition-duration:.3s;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: ease .3s;
 }
 
 .btn-auth:hover{
   background-color: #33f;
-  border-color:white;
+    box-shadow: black 2px 2px 1px;
 }
