@@ -4,10 +4,20 @@
 @section('style', 'event_list.css')
 
 @section('content')
-    <div id="search-container">
+    <div class="search-container">
         <h1>Buscar evento</h1>
         <form action="/events/list" method="GET">
-            <input type="text" id="search" name="search" class="form-control" placeholder="Procurar">
+            <input 
+                type="text" 
+                id="search" 
+                name="search" 
+                class="search-input" 
+                placeholder="Procurar"
+                @if(request('search'))
+                    value="{{request('search')}}"
+                @endif
+            >
+            <button type="submit" class="btn-search"><ion-icon name="search-outline"></ion-icon></button>
         </form>
     </div>
     <h2 class="events-title">

@@ -150,12 +150,12 @@ header{
     border-bottom-color: #f00;
 }
 
-.edit-btn{
-    background-color: #090;
-    color:white;
+.edit-btn {
+    background-color: #030;
+    color: white;
     border: 1px solid #0f0;
-    transition:ease .3s;
-    margin-right:5px;
+    transition: ease .3s;
+    margin-right: 5px;
 }
 
 .edit-btn:hover {
