@@ -24,7 +24,7 @@
             @else
                 <?php
                     $event = new App\Models\Event();
-                    $event->image = $event->title = $event->date = $event->city = $event->description = "";
+                    $event->date = $event->title = $event->image = $event->city = $event->description = null;
                 ?>
             @endif
 
