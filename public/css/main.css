@@ -11,7 +11,8 @@ html{
     font-family: 'Roboto';
 }
 *,:after,:before{
-    box-sizing:border-box;border:0 solid #e2e8f0
+    box-sizing:border-box;
+    border:0 solid #e2e8f0;
 }
 
 
@@ -178,9 +179,16 @@ header{
 
 @media screen and (max-width: 600px) {
     .menu {
-        width: 100%;
         max-height: 0;
         overflow: hidden;
+        position: fixed;
+        top: 8%;
+        right: 6%;
+        width: 160px;
+        background-color: black;
+        border-radius: 20px 0px 20px 20px;
+        transition: ease 1s;
+        z-index: 1;
     }
     .list {
         flex-direction: column;
@@ -194,7 +202,36 @@ header{
     }
     #toggler:checked ~ .menu {
         max-height: 100%;
+        border: white solid 1px;
     }
+
+    .toggler-label ion-icon{
+        width:30px;
+        height:30px;
+    }
+}
+
+.form-input {
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--bs-body-color);
+    background-color: var(--bs-form-control-bg);
+    background-clip: padding-box;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .375rem;
+    transition: ease-in-out .15s;
+}
+
+.form-input:focus{
+    outline: none;
+    box-shadow:blue 2px 2px 5px;
 }
 
 /* footer */

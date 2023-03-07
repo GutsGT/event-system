@@ -32,7 +32,7 @@
                         </svg>
                     </a>
                     <input type="checkbox" id="toggler" />
-                    <label for="toggler">
+                    <label for="toggler" class="toggler-label">
                         <ion-icon name="menu"></ion-icon>
                     </label>
                     <div class="menu">
