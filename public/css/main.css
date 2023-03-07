@@ -230,8 +230,7 @@ header{
 }
 
 .form-input:focus{
-    outline: none;
-    box-shadow:blue 2px 2px 5px;
+    outline: blue solid 2px;
 }
 
 /* footer */
