@@ -53,7 +53,7 @@
             </div>
         @endforeach
         @if(count($events) == 0 && $search)
-            <p>Não foi possível encontrar eventos. <a style="text-decoration: underline; color: blue;" href="/events/list">Ver todos</a></p>
+            <p>Não foi possível encontrar eventos. <br><a style="text-decoration: underline; color: blue;" href="/events/list">Ver todos</a></p>
         @elseif(count($events) == 0 && !request('page'))
             <p>Não há eventos disponíveis nos próximos dias</p>
         @endif

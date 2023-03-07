@@ -57,9 +57,10 @@
 /* Events list */
 #events-container{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+    grid-template-columns: repeat(auto-fill, minmax(260px,24%));
+    justify-content: center;
     gap: 10px;
-    padding: 50px;
+    padding: 2%;
 }
 
 #events-container h2{
