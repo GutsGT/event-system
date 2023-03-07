@@ -43,26 +43,26 @@
             </div>
             <div class="form-group">
                 <label for="title">Evento:</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Nome do evento" value="{{$event->title}}">    
+                <input type="text" class="form-input" id="title" name="title" placeholder="Nome do evento" value="{{$event->title}}">    
             </div>
             <div class="form-group">
                 <label for="title">Data:</label>
-                <input type="datetime-local" class="form-control" id="date" name="date" value="{{$event->date}}">
+                <input type="datetime-local" class="form-input" id="date" name="date" value="{{$event->date}}">
             </div>
             <div class="form-group">
                 <label for="title">Cidade:</label>
-                <input type="text" class="form-control" id="city" name="city" placeholder="Local do evento" value="{{$event->city}}">
+                <input type="text" class="form-input" id="city" name="city" placeholder="Local do evento" value="{{$event->city}}">
             </div>
             <div class="form-group">
                 <label for="title">O evento é privado?</label>
-                <select name="private" id="private" class="form-control">
+                <select name="private" id="private" class="form-input">
                     <option value="0">Não</option>
                     <option value="1" {{ $event->private == 1? "selected='selected'": ""}}>Sim</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="title">Descrição:</label>
-                <textarea name="description" id="description" class="form-control" placeholder="O que vai acontecer no evento?">{{$event->description}}</textarea>
+                <textarea name="description" id="description" class="form-input" placeholder="O que vai acontecer no evento?">{{$event->description}}</textarea>
             </div>
             <div class="form-group">
                 <label for="title">Adicione itens de infraestrutura:</label>
